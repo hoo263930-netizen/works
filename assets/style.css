@@ -53,6 +53,8 @@ img{ max-width:100%; height:auto; }
 .btn.ghost{ background:#fff; color:var(--ink); border:1px solid var(--ink); }
 .btn.ghost:hover{ background:var(--ink); color:#fff; }
 @media (max-width:760px){ .hero{ padding:52px 0 48px; } .btn{ width:100%; text-align:center; } }
+.nb{ display:inline-block; }
+@media (max-width:420px){ .hero h1{ font-size:23px; line-height:1.6; } .nav a.nav-home{ display:none; } }
 
 /* セクション */
 .section{ padding:88px 0; }

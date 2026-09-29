@@ -30,7 +30,8 @@ def header(root, current):
     links = []
     for path, label in NAV:
         cur = ' aria-current="page"' if path == current else ""
-        links.append(f'<a href="{root}{path}"{cur}>{label}</a>')
+        cls = ' class="nav-home"' if path == "" else ""
+        links.append(f'<a{cls} href="{root}{path}"{cur}>{label}</a>')
     cur = ' aria-current="page"' if current == "contact/" else ""
     links.append(f'<a class="nav-cta" href="{root}contact/"{cur}>お問い合わせ</a>')
     return f"""<header class="site-header">
@@ -121,7 +122,7 @@ TOP = f"""
 <section class="hero">
   <div class="wrap">
     <p class="eyebrow">遊べるお寺プロジェクト｜ご依頼・ご相談</p>
-    <h1>地域の「人が集まる場」を、<br />ひらいて、続く形にします</h1>
+    <h1><span class="nb">地域の「人が集まる場」を、</span><span class="nb">ひらいて、</span><span class="nb">続く形にします</span></h1>
     <p class="lead">健康麻雀・座禅・ボードゲームで場をひらく、滋賀・高島のお坊さん</p>
     <p class="body">公民館、サロン、学童、施設へ出張します。一回の催しで終わらせず、担い手の方が一人でも回せる形まで、一緒に考えます。</p>
     <div class="btns">
