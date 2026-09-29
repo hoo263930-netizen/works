@@ -163,3 +163,4 @@ a.minor.biz .go{ display:inline-block; margin-left:8px; color:var(--accent); fon
 .flow.flow5 h3{ font-size:16px; }
 @media (max-width:900px){ .flow.flow5{ grid-template-columns:1fr; } }
 @media (max-width:760px){ .sp-none{ display:none; } }
+@media (max-width:420px){ .page-head h1{ font-size:23px; line-height:1.6; } }

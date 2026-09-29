@@ -23,7 +23,7 @@ def head(title, desc, root):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=3" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=4" />
 </head>
 <body>
 """
@@ -278,7 +278,7 @@ SERVICE = f"""
 
 # ───────── つくる（お店・事業者の方へ） ─────────
 TSUKURU = f"""
-<section class="page-head"><div class="wrap"><span class="en">FOR BUSINESS</span><h1>公式LINE・ホームページ、<br class="sp-none" />会って、その場で作ります</h1><p>高島のお店・教室・小さな事業者のための、公式LINEとホームページづくりです。</p></div></section>
+<section class="page-head"><div class="wrap"><span class="en">FOR BUSINESS</span><h1><span class="nb">公式LINE・ホームページ、</span><span class="nb">会って、</span><span class="nb">その場で作ります</span></h1><p>高島のお店・教室・小さな事業者のための、公式LINEとホームページづくりです。</p></div></section>
 <div class="page-body"><div class="wrap">
 
 <div class="block">
