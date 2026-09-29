@@ -151,3 +151,15 @@ a.work:hover{ border-color:var(--accent); }
 .site-footer a:hover{ color:var(--accent); }
 .site-footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px 18px; }
 .site-footer .copy{ margin-top:24px; font-size:12px; }
+
+/* 9/29夜 追加：お店・事業者の方への入口／帯の補足／5段の流れ */
+a.minor.biz{ display:block; text-decoration:none; border:1px solid var(--accent); background:var(--accent-soft); color:var(--ink); }
+a.minor.biz:hover{ background:#dbe9e3; }
+a.minor.biz .go{ display:inline-block; margin-left:8px; color:var(--accent); font-weight:700; }
+.band-sub{ margin:18px auto 0 !important; font-size:14px; }
+.band-sub a{ color:#fff; }
+.flow.flow5{ grid-template-columns:repeat(5,1fr); max-width:none; }
+.flow.flow5 li{ padding:20px 16px; }
+.flow.flow5 h3{ font-size:16px; }
+@media (max-width:900px){ .flow.flow5{ grid-template-columns:1fr; } }
+@media (max-width:760px){ .sp-none{ display:none; } }

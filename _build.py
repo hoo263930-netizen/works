@@ -6,6 +6,8 @@ HP = "https://hoo263930-netizen.github.io"
 LINE_SOUDAN = "https://lin.ee/ZITRIHg"      # 公式LINEで相談する（今のHPのご依頼ページと同じ）
 FORM = HP + "/contact/"                      # お問い合わせフォーム（今のHP）
 NOTE = "https://note.com/loyal_dill1011"
+INSTA = "https://www.instagram.com/asoberu_otera/"
+MAIL = "hoo263930@gmail.com"
 
 NAV = [("", "ホーム"), ("service/", "サービス"), ("results/", "実績"), ("about/", "自己紹介")]
 
@@ -21,7 +23,7 @@ def head(title, desc, root):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=2" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=3" />
 </head>
 <body>
 """
@@ -51,6 +53,7 @@ def cta_band(root):
       <a class="btn primary" href="{LINE_SOUDAN}" target="_blank" rel="noopener">公式LINEで相談する</a>
       <a class="btn ghost" href="{FORM}" target="_blank" rel="noopener">お問い合わせフォーム</a>
     </div>
+    <p class="band-sub">Instagramの<a href="{INSTA}" target="_blank" rel="noopener">DM</a>、メール（<a href="mailto:{MAIL}">{MAIL}</a>）でも受け付けています。</p>
   </div>
 </section>
 """
@@ -154,7 +157,7 @@ TOP = f"""
       <div class="card"><span class="num">02</span><h3>続く形にする</h3><p>研修・講座・講演。担い手の方が、一人でも回せる大きさで続けるための話をします。チラシや公式LINEなど、告知の道具の使い方も扱います。</p></div>
       <div class="card"><span class="num">03</span><h3>相談にのる</h3><p>始めたい。人が集まらない。続けるのがしんどい。何をやるかを決める手前から、一緒に考えます。</p></div>
     </div>
-    <div class="minor"><b>つくる（公式LINE・ホームページ）</b>　会って、聞いて、その場で作ります。自分で直せる形でお渡しします。</div>
+    <a class="minor biz" href="{{root}}tsukuru/"><b>お店・事業者の方へ｜公式LINE・ホームページ制作</b>　会って、聞いて、その場で作ります。自分で直せる形でお渡しします。<span class="go">くわしく見る →</span></a>
     <p class="more"><a href="{{root}}service/">サービスの詳細を見る →</a></p>
   </div>
 </section>
@@ -265,12 +268,77 @@ SERVICE = f"""
     <li>画像は、編集できるデータごとお渡しします</li>
     <li>直し方を、その場で一度一緒にやります</li>
   </ul>
+  <p><a href="../tsukuru/">お店・事業者の方へのご案内（流れ・当日までにご用意いただくもの）→</a></p>
   {PRICE_NOTE}
 </div>
 
 </div></div>
 """
 
+
+# ───────── つくる（お店・事業者の方へ） ─────────
+TSUKURU = f"""
+<section class="page-head"><div class="wrap"><span class="en">FOR BUSINESS</span><h1>公式LINE・ホームページ、<br class="sp-none" />会って、その場で作ります</h1><p>高島のお店・教室・小さな事業者のための、公式LINEとホームページづくりです。</p></div></section>
+<div class="page-body"><div class="wrap">
+
+<div class="block">
+  <h2>こんなこと、ありませんか</h2>
+  <ul class="worries">
+    <li>公式LINE、作りたいけど時間がない</li>
+    <li>ホームページ、頼むと高そう</li>
+    <li>作ったあと、自分で直せるか不安</li>
+  </ul>
+</div>
+
+<div class="block">
+  <h2>3つの特長</h2>
+  <div class="cards">
+    <div class="card"><span class="num">01</span><h3>その日に、できあがる</h3><p>お店に伺い、お話を聞きながら、その場で作ってお渡しします（目安2時間）。</p></div>
+    <div class="card"><span class="num">02</span><h3>自分で直せる形で渡す</h3><p>データごとお渡しし、直し方も一度いっしょにやります。あとから誰かに頼まなくてすみます。</p></div>
+    <div class="card"><span class="num">03</span><h3>「まだ決めていない」から相談できる</h3><p>作るかどうか迷っている段階でも大丈夫です。</p></div>
+  </div>
+</div>
+
+<div class="block">
+  <h2>作れるもの</h2>
+  <ul>
+    <li><b>公式LINE</b>：開設から、リッチメニュー（トーク画面の下に出るボタン）まで</li>
+    <li><b>ホームページ</b>：1ページのホームページ</li>
+  </ul>
+  <p>お店・団体のアカウントで作ります。こちらの手を離れても、そちらのものとして残ります。</p>
+  <div class="note-box">2026年9月、地域のお店の公式LINEを、開設からメニューまで、その日のうちに作りました。<a href="{NOTE}/n/n7ce9939c689e" target="_blank" rel="noopener">そのときの様子（note）</a></div>
+</div>
+
+<div class="block">
+  <h2>流れ</h2>
+  <ol class="flow flow5">
+    <li><h3>ご連絡</h3><p>公式LINE・InstagramのDM・メールから。</p></li>
+    <li><h3>日程を決める</h3><p>作りたいものと、お店に伺う日を決めます。</p></li>
+    <li><h3>お店でお会いする</h3><p>お話を聞きながら、中身を決めます。</p></li>
+    <li><h3>その場で作る</h3><p>目の前で作っていきます。</p></li>
+    <li><h3>直し方を覚えて完成</h3><p>一度いっしょに直してみて、お渡しします。</p></li>
+  </ol>
+</div>
+
+<div class="block">
+  <h2>当日までにご用意いただくもの</h2>
+  <p>ここがそろっていないと、当日は相談だけで終わることがあります。</p>
+  <ul>
+    <li>使うメールアドレスと、そのパスワードが分かる状態</li>
+    <li>SMS（ショートメール）が受け取れる携帯電話</li>
+    <li>お店のロゴ・写真（あれば）</li>
+    <li>メニュー・値段・営業時間の一覧（紙でもメモでも）</li>
+    <li>当日、一緒に見られるパソコンかタブレット（なければこちらで用意します）</li>
+  </ul>
+</div>
+
+<div class="block">
+  <h2>料金</h2>
+  {PRICE_NOTE}
+</div>
+
+</div></div>
+"""
 # ───────── 実績 ─────────
 MORE_WORKS = [
     ("健康麻雀", "2026年8月", "健康麻雀大会", "初めての大会の企画・運営。12名・3卓。", NOTE + "/n/n868f7aded76b"),
@@ -343,6 +411,10 @@ CONTACT = f"""
     <a class="btn primary" href="{LINE_SOUDAN}" target="_blank" rel="noopener">公式LINEで相談する</a>
     <a class="btn ghost" href="{FORM}" target="_blank" rel="noopener">お問い合わせフォーム</a>
   </div>
+  <ul>
+    <li>Instagramの<a href="{INSTA}" target="_blank" rel="noopener">DM</a>でも受け付けています</li>
+    <li>メール：<a href="mailto:{MAIL}">{MAIL}</a></li>
+  </ul>
   <p class="note-box">個人の方の個別相談は、<a href="{HP}/consult/" target="_blank" rel="noopener">相談のページ</a>からお申し込みください。</p>
 </div>
 </div></div>
@@ -352,4 +424,5 @@ page("", "", "遊べるお寺プロジェクト｜ご依頼・ご相談", "地�
 page("service/", "service/", "サービス｜遊べるお寺プロジェクト ご依頼・ご相談", "出張して場をひらく／続く形にする（研修・講座・講演）／相談にのる／つくる（公式LINE・ホームページ）", SERVICE)
 page("results/", "results/", "実績｜遊べるお寺プロジェクト ご依頼・ご相談", "健康麻雀・座禅・謎解き・講座など、これまでに開いた場とお受けした依頼。", RESULTS)
 page("about/", "about/", "自己紹介｜遊べるお寺プロジェクト ご依頼・ご相談", "こーせん（久我光聖）。住職・社会福祉士・保育士。滋賀県高島市。", ABOUT)
+page("tsukuru/", "tsukuru/", "公式LINE・ホームページ制作｜遊べるお寺プロジェクト ご依頼・ご相談", "高島のお店・教室・小さな事業者のための、公式LINEとホームページづくり。会って、その場で作ります。", TSUKURU)
 page("contact/", "contact/", "お問い合わせ｜遊べるお寺プロジェクト ご依頼・ご相談", "公式LINEかお問い合わせフォームから。", CONTACT)
