@@ -214,7 +214,7 @@ PRICE_NOTE = '<div class="note-box">料金は、内容をうかがってから�
 # 公式LINE・ホームページ制作の料金（2026年9月30日に決定。04_決定事項 9/30）
 TSUKURU_PRICE = """<table class="price">
   <tr><th>公式LINE</th><td><b>30,000円</b><span class="p-sub">開設・基本設定（2026年12月までのお申し込み）</span></td></tr>
-  <tr><th>＋リッチメニュー</th><td><b>5,000円</b><span class="p-sub">トーク画面の下に出るボタン</span></td></tr>
+  <tr><th>＋リッチメニュー</th><td><b>5,000円</b><span class="p-sub">トーク画面の下のボタン</span></td></tr>
   <tr><th>＋アイコン</th><td><b>5,000円</b></td></tr>
   <tr><th>ホームページ</th><td><b>50,000円</b><span class="p-sub">1ページ</span></td></tr>
 </table>
