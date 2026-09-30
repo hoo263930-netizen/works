@@ -23,7 +23,7 @@ def head(title, desc, root):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=4" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=5" />
 </head>
 <body>
 """
@@ -211,6 +211,18 @@ TOP = f"""
 
 # ───────── サービス ─────────
 PRICE_NOTE = '<div class="note-box">料金は、内容をうかがってからお伝えします。料金の目安は、準備ができしだい、このページに載せます。</div>'
+# 公式LINE・ホームページ制作の料金（2026年9月30日に決定。04_決定事項 9/30）
+TSUKURU_PRICE = """<table class="price">
+  <tr><th>公式LINE</th><td><b>30,000円</b><span class="p-sub">開設・基本設定（2026年12月までのお申し込み）</span></td></tr>
+  <tr><th>　＋リッチメニュー</th><td><b>5,000円</b><span class="p-sub">トーク画面の下に出るボタン</span></td></tr>
+  <tr><th>　＋アイコン</th><td><b>5,000円</b></td></tr>
+  <tr><th>ホームページ</th><td><b>50,000円</b><span class="p-sub">1ページ</span></td></tr>
+</table>
+<ul class="price-notes">
+  <li>作る日にお店で一緒に作る時間（2時間まで）は、料金に含みます。2時間を超えた分は、1時間3,000円です。</li>
+  <li>作るかどうかを決める前の相談で伺う場合は、1回5,000円です。</li>
+  <li>ホームページは、Canvaの無料のアドレスで公開します。独自ドメインにする場合は、Canva Pro（月1,500円）をお店側でご契約ください。直しは1回まで。文章と写真は、お店側でご用意ください。</li>
+</ul>"""
 SERVICE = f"""
 <section class="page-head"><div class="wrap"><span class="en">SERVICE</span><h1>サービス</h1><p>中心は「場をひらく」と「続く形にする」の2つです。公式LINE・ホームページの制作もお受けしています。</p></div></section>
 <div class="page-body"><div class="wrap">
@@ -268,8 +280,9 @@ SERVICE = f"""
     <li>画像は、編集できるデータごとお渡しします</li>
     <li>直し方を、その場で一度一緒にやります</li>
   </ul>
+  <h3>料金</h3>
+  {TSUKURU_PRICE}
   <p><a href="../tsukuru/">お店・事業者の方へのご案内（流れ・当日までにご用意いただくもの）→</a></p>
-  {PRICE_NOTE}
 </div>
 
 </div></div>
@@ -293,7 +306,7 @@ TSUKURU = f"""
 <div class="block">
   <h2>3つの特長</h2>
   <div class="cards">
-    <div class="card"><span class="num">01</span><h3>その日に、できあがる</h3><p>お店に伺い、お話を聞きながら、その場で作ってお渡しします（目安2時間）。</p></div>
+    <div class="card"><span class="num">01</span><h3>その日に、できあがる</h3><p>お店に伺い、お話を聞きながら、その場で作ってお渡しします（公式LINEは目安2時間。ホームページは1〜2回伺います）。</p></div>
     <div class="card"><span class="num">02</span><h3>自分で直せる形で渡す</h3><p>データごとお渡しし、直し方も一度いっしょにやります。あとから誰かに頼まなくてすみます。</p></div>
     <div class="card"><span class="num">03</span><h3>「まだ決めていない」から相談できる</h3><p>作るかどうか迷っている段階でも大丈夫です。</p></div>
   </div>
@@ -334,7 +347,7 @@ TSUKURU = f"""
 
 <div class="block">
   <h2>料金</h2>
-  {PRICE_NOTE}
+  {TSUKURU_PRICE}
 </div>
 
 </div></div>
