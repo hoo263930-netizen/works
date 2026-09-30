@@ -23,7 +23,7 @@ def head(title, desc, root):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=5" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=6" />
 </head>
 <body>
 """
@@ -214,8 +214,8 @@ PRICE_NOTE = '<div class="note-box">料金は、内容をうかがってから�
 # 公式LINE・ホームページ制作の料金（2026年9月30日に決定。04_決定事項 9/30）
 TSUKURU_PRICE = """<table class="price">
   <tr><th>公式LINE</th><td><b>30,000円</b><span class="p-sub">開設・基本設定（2026年12月までのお申し込み）</span></td></tr>
-  <tr><th>　＋リッチメニュー</th><td><b>5,000円</b><span class="p-sub">トーク画面の下に出るボタン</span></td></tr>
-  <tr><th>　＋アイコン</th><td><b>5,000円</b></td></tr>
+  <tr><th>＋リッチメニュー</th><td><b>5,000円</b><span class="p-sub">トーク画面の下に出るボタン</span></td></tr>
+  <tr><th>＋アイコン</th><td><b>5,000円</b></td></tr>
   <tr><th>ホームページ</th><td><b>50,000円</b><span class="p-sub">1ページ</span></td></tr>
 </table>
 <ul class="price-notes">

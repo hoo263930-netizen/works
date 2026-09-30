@@ -168,7 +168,7 @@ a.minor.biz .go{ display:inline-block; margin-left:8px; color:var(--accent); fon
 /* 料金表（2026年9月30日） */
 table.price{ width:100%; border-collapse:collapse; margin:8px 0 12px; background:#fff; }
 table.price th, table.price td{ border-bottom:1px solid var(--line); padding:12px 10px; text-align:left; vertical-align:top; font-size:15px; }
-table.price th{ width:42%; font-weight:600; color:var(--ink); }
+table.price th{ width:1%; white-space:nowrap; font-weight:600; color:var(--ink); padding-right:18px; }
 table.price td b{ font-size:17px; }
 table.price .p-sub{ display:block; font-size:13px; color:var(--sub); margin-top:2px; }
 ul.price-notes{ margin:0; padding-left:1.2em; color:var(--sub); font-size:14px; }
