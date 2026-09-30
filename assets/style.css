@@ -173,3 +173,20 @@ table.price td b{ font-size:17px; }
 table.price .p-sub{ display:block; font-size:13px; color:var(--sub); margin-top:2px; }
 ul.price-notes{ margin:0; padding-left:1.2em; color:var(--sub); font-size:14px; }
 ul.price-notes li{ margin:4px 0; }
+
+/* 写真（2026年9月30日） */
+.card.has-img{ padding:0; overflow:hidden; display:flex; flex-direction:column; }
+.card-img{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+.card-body{ padding:22px 24px 26px; }
+.photo-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0 0 20px; }
+.photo-row.one{ grid-template-columns:1fr; max-width:520px; }
+.photo-row figure{ margin:0; }
+.photo-row img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:8px; display:block; }
+.photo-row figcaption{ font-size:13px; color:var(--sub); margin-top:4px; }
+@media (max-width:600px){ .photo-row{ grid-template-columns:1fr 1fr; } }
+/* 受講した方の声 */
+.voices{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.voice{ margin:0; background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:8px; padding:22px 22px 18px; }
+.voice blockquote{ margin:0 0 12px; font-size:15px; line-height:1.9; }
+.voice figcaption{ font-size:12px; color:var(--sub); }
+@media (max-width:900px){ .voices{ grid-template-columns:1fr; } }

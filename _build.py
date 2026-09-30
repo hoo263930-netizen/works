@@ -22,7 +22,7 @@ def head(title, desc, root):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=6" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=7" />
 </head>
 <body>
 """
@@ -152,9 +152,9 @@ TOP = f"""
   <div class="wrap">
     <div class="sec-head"><span class="en">SERVICE</span><h2>できること</h2></div>
     <div class="cards">
-      <div class="card"><span class="num">01</span><h3>出張して、場をひらく</h3><p>健康麻雀、座禅・写経、子どもの遊び、謎解き。麻雀卓や座蒲（座禅用の座布団）など、道具を持って伺います。</p></div>
-      <div class="card"><span class="num">02</span><h3>続く形にする</h3><p>研修・講座・講演。担い手の方が、一人でも回せる大きさで続けるための話をします。チラシや公式LINEなど、告知の道具の使い方も扱います。</p></div>
-      <div class="card"><span class="num">03</span><h3>相談にのる</h3><p>始めたい。人が集まらない。続けるのがしんどい。何をやるかを決める手前から、一緒に考えます。</p></div>
+      <div class="card has-img"><img class="card-img" src="{{root}}images/mahjong-play.jpg" alt="健康麻雀の会の様子" loading="lazy"><div class="card-body"><span class="num">01</span><h3>出張して、場をひらく</h3><p>健康麻雀、座禅・写経、子どもの遊び、謎解き。麻雀卓や座蒲（座禅用の座布団）など、道具を持って伺います。</p></div></div>
+      <div class="card has-img"><img class="card-img" src="{{root}}images/seminar-lecture.jpg" alt="講座の様子" loading="lazy"><div class="card-body"><span class="num">02</span><h3>続く形にする</h3><p>研修・講座・講演。担い手の方が、一人でも回せる大きさで続けるための話をします。チラシや公式LINEなど、告知の道具の使い方も扱います。</p></div></div>
+      <div class="card has-img"><img class="card-img" src="{{root}}images/zazen-hall.jpg" alt="お寺の本堂" loading="lazy"><div class="card-body"><span class="num">03</span><h3>相談にのる</h3><p>始めたい。人が集まらない。続けるのがしんどい。何をやるかを決める手前から、一緒に考えます。</p></div></div>
     </div>
     <a class="minor biz" href="{{root}}tsukuru/"><b>お店・事業者の方へ｜公式LINE・ホームページ制作</b>　会って、聞いて、その場で作ります。自分で直せる形でお渡しします。<span class="go">くわしく見る →</span></a>
     <p class="more"><a href="{{root}}service/">サービスの詳細を見る →</a></p>
@@ -168,6 +168,17 @@ TOP = f"""
       {''.join(work_card(*w) for w in WORKS[:4])}
     </div>
     <p class="more"><a href="{{root}}results/">実績をもっと見る →</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><span class="en">VOICES</span><h2>受講した方の声</h2></div>
+    <div class="voices">
+      <figure class="voice"><blockquote>初めてAIでチラシを作る事ができて、本当に感動しました！また機会があれば是非参加したいです！</blockquote><figcaption>チラシ作り講座（2026年7月）受講者アンケートより</figcaption></figure>
+      <figure class="voice"><blockquote>プロンプトは自身で考えるものだと思っていたので、プロンプトをAIに作成してもらうという事を知れたのが収穫でした。</blockquote><figcaption>チラシ作り講座 ステップアップ編（2026年9月）受講者アンケートより</figcaption></figure>
+      <figure class="voice"><blockquote>AIを音声で使いこなすことが、意外とスムーズにできたのが嬉しかったです。</blockquote><figcaption>はじめてのAIセミナー（2026年9月）受講者アンケートより</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -228,6 +239,11 @@ SERVICE = f"""
 
 <div class="block" id="hiraku">
   <h2>01　出張して、場をひらく</h2>
+  <div class="photo-row">
+    <figure><img src="../images/mahjong-play.jpg" alt="健康麻雀の会" loading="lazy"><figcaption>健康麻雀</figcaption></figure>
+    <figure><img src="../images/zazen-kids.jpg" alt="子どもたちへの座禅" loading="lazy"><figcaption>座禅</figcaption></figure>
+    <figure><img src="../images/kids-boardgame.jpg" alt="子どものボードゲーム" loading="lazy"><figcaption>子どもの遊び</figcaption></figure>
+  </div>
   <h3>健康麻雀</h3>
   <p>会を開く／大会の企画・運営（組み合わせ、点数表、進行まで）／初めての方への講座。卓と牌を持って伺うので、会場に道具がなくても開けます。麻雀を知らない方も遊べる「4枚麻雀」の体験もできます。</p>
   <h3>座禅・写経・仏教カフェ</h3>
@@ -243,6 +259,7 @@ SERVICE = f"""
 
 <div class="block" id="tsuzuku">
   <h2>02　続く形にする（研修・講座・講演）</h2>
+  <div class="photo-row one"><figure><img src="../images/seminar-lecture.jpg" alt="講座の様子" loading="lazy"><figcaption>講座の様子</figcaption></figure></div>
   <p>担い手の方が、自分たちで続けられるようにするための研修・講座です。</p>
   <ul>
     <li><b>地域活動のはじめ方</b>：大きく始めず、一人でも回せる大きさで始めて、続ける話</li>
