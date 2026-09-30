@@ -226,7 +226,7 @@ TSUKURU_PRICE = """<table class="price">
   <tr><th>公式LINE</th><td><b>30,000円</b><span class="p-sub">開設・基本設定（2026年12月までのお申し込み）</span></td></tr>
   <tr><th>＋リッチメニュー</th><td><b>5,000円</b><span class="p-sub">トーク画面の下のボタン</span></td></tr>
   <tr><th>＋アイコン</th><td><b>5,000円</b></td></tr>
-  <tr><th>ホームページ</th><td><b>50,000円</b><span class="p-sub">1ページ</span></td></tr>
+  <tr><th>ホームページ</th><td><b>80,000円から</b><span class="p-sub">1ページ</span></td></tr>
 </table>
 <ul class="price-notes">
   <li>作る日にお店で一緒に作る時間（2時間まで）は、料金に含みます。2時間を超えた分は、1時間3,000円です。</li>
