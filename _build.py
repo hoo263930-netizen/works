@@ -9,15 +9,19 @@ NOTE = "https://note.com/loyal_dill1011"
 INSTA = "https://www.instagram.com/asoberu_otera/"
 MAIL = "hoo263930@gmail.com"
 
+SITE = "https://asoberu-otera-works.pages.dev/"  # 2026年10月1日、GitHub PagesからCloudflare Pagesへ移した
+
 NAV = [("", "ホーム"), ("service/", "サービス"), ("results/", "実績"), ("about/", "自己紹介")]
 
-def head(title, desc, root):
+def head(title, desc, root, path=""):
     return f"""<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>/* 古い住所（github.io/works）で開かれたら、新しい住所の同じページへ移す */if(/\\.github\\.io$/.test(location.hostname)){{location.replace("{SITE}"+location.pathname.replace(/^\\/works\\/?/,"")+location.search+location.hash);}}</script>
   <title>{title}</title>
+  <link rel="canonical" href="{SITE}{path}" />
   <meta name="description" content="{desc}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -86,7 +90,7 @@ def footer(root):
 
 def page(path, current, title, desc, body):
     root = "../" * path.count("/")
-    html = head(title, desc, root) + header(root, current) + "<main>\n" + body.replace("{root}", root) + "</main>\n" + cta_band(root) + footer(root)
+    html = head(title, desc, root, path) + header(root, current) + "<main>\n" + body.replace("{root}", root) + "</main>\n" + cta_band(root) + footer(root)
     out = path + "index.html" if path.endswith("/") or path == "" else path
     if path == "":
         out = "index.html"
