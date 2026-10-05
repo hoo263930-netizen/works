@@ -26,7 +26,7 @@ def head(title, desc, root, path=""):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=7" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=8" />
 </head>
 <body>
 """
@@ -84,6 +84,8 @@ def footer(root):
     <p class="copy">© 遊べるお寺プロジェクト</p>
   </div>
 </footer>
+<a class="float-line" href="{LINE_SOUDAN}" target="_blank" rel="noopener">LINEで相談</a>
+<a class="to-top" href="#" aria-label="ページの上へ">↑</a>
 </body>
 </html>
 """
@@ -123,6 +125,47 @@ def work_card(cat, date, title, text, url):
         return f'<a class="work" href="{url}" target="_blank" rel="noopener">{inner}<span class="go">活動報告を読む →</span></a>'
     return f'<div class="work">{inner}</div>'
 
+# ───────── アイコン（2026年10月5日・線だけの簡単な絵。色は style.css の --accent） ─────────
+def svg(inner):
+    return f'<svg viewBox="0 0 48 48" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{inner}</svg>'
+ICON = {
+    "mahjong": svg('<rect x="13" y="6" width="22" height="34" rx="4"/><circle cx="24" cy="15" r="3"/><circle cx="24" cy="23" r="3"/><circle cx="24" cy="31" r="3"/>'),
+    "zazen":   svg('<circle cx="24" cy="11" r="5"/><path d="M24 17v10"/><path d="M14 38c2-7 6-11 10-11s8 4 10 11z"/><path d="M8 40h32"/>'),
+    "dice":    svg('<rect x="8" y="8" width="32" height="32" rx="7"/><circle cx="16" cy="16" r="2.2" fill="currentColor"/><circle cx="24" cy="24" r="2.2" fill="currentColor"/><circle cx="32" cy="32" r="2.2" fill="currentColor"/>'),
+    "lecture": svg('<rect x="6" y="7" width="36" height="24" rx="2"/><path d="M24 31v9"/><path d="M16 41h16"/><path d="M12 15h14M12 21h20"/>'),
+    "talk":    svg('<path d="M6 10h24v15H16l-6 5v-5H6z"/><path d="M30 18h12v14h-3v5l-6-5H22v-4"/>'),
+    "web":     svg('<rect x="5" y="9" width="38" height="30" rx="3"/><path d="M5 17h38"/><circle cx="10" cy="13" r="1" fill="currentColor"/><circle cx="14" cy="13" r="1" fill="currentColor"/><path d="M12 25h14M12 31h22"/>'),
+}
+SERVICES = [
+    ("mahjong", "健康麻雀", "会・大会・初めての方の講座", "service/#hiraku"),
+    ("zazen", "座禅・写経", "住職が道具を持って伺います", "service/#hiraku"),
+    ("dice", "子どもの遊び", "ボードゲーム・謎解き・学童", "service/#hiraku"),
+    ("lecture", "研修・講座", "続ける話、告知の道具の使い方", "service/#tsuzuku"),
+    ("talk", "相談", "始める前から、一緒に考えます", "service/#soudan"),
+    ("web", "公式LINE・HP制作", "会って、その場で作ります", "tsukuru/"),
+]
+def svc_item(icon, name, sub, href):
+    return f'<a class="svc" href="{{root}}{href}"><span class="svc-icon">{ICON[icon]}</span><b>{name}</b><small>{sub}</small></a>'
+
+# ───────── 実績（画像つき・トップ） ─────────
+GALLERY = [
+    ("健康麻雀", "images/mahjong-play.jpg", "公民館の健康麻雀講座", "定員8名に40名以上の申し込み。いまは月2回の講座に。", NOTE + "/n/n5e70d0323a00"),
+    ("座禅", "images/zazen-kids.jpg", "学童での座禅", "約90人の子どもを、5つの組に分けて。", NOTE + "/n/nba5500e91aa4"),
+    ("子どもの遊び", "images/kids-boardgame.jpg", "子ども向けの遊びの時間", "低学年と高学年に分けてから、合流させる形で。", NOTE + "/n/n1e4b9bcd5b6c"),
+    ("講座", "images/seminar-lecture.jpg", "チラシ作り講座", "定員6名がすぐに埋まり、2回目を開きました。", NOTE + "/n/nf34be5c42627"),
+    ("ホームページ", "images/works/site-chozenji.jpg", "長善寺のホームページ", "お寺の案内・座禅体験・永代供養墓。英語版も。", "https://chozenji.pages.dev/"),
+    ("チラシ", "images/works/flyer-course.jpg", "講座のチラシ", "ChatGPTとCanvaで、自分で作っています。", None),
+]
+def gal_item(cat, img, title, text, url):
+    inner = f'<span class="gal-img"><img src="{{root}}{img}" alt="{title}" loading="lazy"></span><span class="gal-body"><span class="cat">■ {cat}</span><b>{title}</b><small>{text}</small></span>'
+    if url:
+        return f'<a class="gal" href="{url}" target="_blank" rel="noopener">{inner}</a>'
+    return f'<div class="gal">{inner}</div>'
+
+IG = [("shakyo-morning", "湖畔の朝の写経会"), ("taiwan-mahjong", "多言語カフェ（台湾麻雀）"), ("mahjong-kai", "健康麻雀会"),
+      ("boardgame", "ボードゲーム会"), ("taiwan-talk", "多言語カフェ"), ("wan", "講座の会場（Wan）")]
+IG_HTML = "".join(f'<a href="{INSTA}" target="_blank" rel="noopener"><img src="{{root}}images/ig/{f}.jpg" alt="{a}" loading="lazy"></a>' for f, a in IG)
+
 # ───────── トップ ─────────
 TOP = f"""
 <section class="hero">
@@ -135,6 +178,14 @@ TOP = f"""
       <a class="btn primary" href="{{root}}contact/">相談する</a>
       <a class="btn ghost" href="{{root}}service/">サービスを見る</a>
     </div>
+  </div>
+</section>
+
+<section class="philo">
+  <div class="wrap">
+    <h2><span class="nb">続ける前提で、始めない。</span><span class="nb">一人で回せる仕組みを、つくる。</span></h2>
+    <p>大きく始めて、続けるために無理をするより、一人でも回せる大きさで始める。そのほうが続く、と考えています。頼まれて作るものも、相手の方が自分で回せる形でお渡しします。</p>
+    <p class="philo-btn"><a class="btn-sub" href="{{root}}about/">自己紹介はこちら ›</a></p>
   </div>
 </section>
 
@@ -154,11 +205,9 @@ TOP = f"""
 
 <section class="section soft">
   <div class="wrap">
-    <div class="sec-head"><span class="en">SERVICE</span><h2>できること</h2></div>
-    <div class="cards">
-      <div class="card has-img"><img class="card-img" src="{{root}}images/mahjong-play.jpg" alt="健康麻雀の会の様子" loading="lazy"><div class="card-body"><span class="num">01</span><h3>出張して、場をひらく</h3><p>健康麻雀、座禅・写経、子どもの遊び、謎解き。麻雀卓や座蒲（座禅用の座布団）など、道具を持って伺います。</p></div></div>
-      <div class="card has-img"><img class="card-img" src="{{root}}images/seminar-lecture.jpg" alt="講座の様子" loading="lazy"><div class="card-body"><span class="num">02</span><h3>続く形にする</h3><p>研修・講座・講演。担い手の方が、一人でも回せる大きさで続けるための話をします。チラシや公式LINEなど、告知の道具の使い方も扱います。</p></div></div>
-      <div class="card has-img"><img class="card-img" src="{{root}}images/zazen-hall.jpg" alt="お寺の本堂" loading="lazy"><div class="card-body"><span class="num">03</span><h3>相談にのる</h3><p>始めたい。人が集まらない。続けるのがしんどい。何をやるかを決める手前から、一緒に考えます。</p></div></div>
+    <div class="sec-head"><span class="en">SERVICE</span><h2>主なサービス</h2><p>出張して場をひらくことと、続く形にすること。公式LINE・ホームページの制作もお受けしています。</p></div>
+    <div class="svc-grid">
+      {''.join(svc_item(*s) for s in SERVICES)}
     </div>
     <a class="minor biz" href="{{root}}tsukuru/"><b>お店・事業者の方へ｜公式LINE・ホームページ制作</b>　会って、聞いて、その場で作ります。自分で直せる形でお渡しします。<span class="go">くわしく見る →</span></a>
     <p class="more"><a href="{{root}}service/">サービスの詳細を見る →</a></p>
@@ -167,9 +216,9 @@ TOP = f"""
 
 <section class="section">
   <div class="wrap">
-    <div class="sec-head"><span class="en">RESULTS</span><h2>これまでの場</h2></div>
-    <div class="works-list">
-      {''.join(work_card(*w) for w in WORKS[:4])}
+    <div class="sec-head"><span class="en">RESULTS</span><h2>実績</h2><p>開いてきた場と、作ってきたもの。くわしい様子は、活動報告（note）に書いています。</p></div>
+    <div class="gal-grid">
+      {''.join(gal_item(*g) for g in GALLERY)}
     </div>
     <p class="more"><a href="{{root}}results/">実績をもっと見る →</a></p>
   </div>
@@ -183,6 +232,16 @@ TOP = f"""
       <figure class="voice"><blockquote>プロンプトは自身で考えるものだと思っていたので、プロンプトをAIに作成してもらうという事を知れたのが収穫でした。</blockquote><figcaption>チラシ作り講座 ステップアップ編（2026年9月）受講者アンケートより</figcaption></figure>
       <figure class="voice"><blockquote>AIを音声で使いこなすことが、意外とスムーズにできたのが嬉しかったです。</blockquote><figcaption>はじめてのAIセミナー（2026年9月）受講者アンケートより</figcaption></figure>
     </div>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="en">INSTAGRAM</span><h2>日々の活動</h2><p>高島市で開いている会の様子を、Instagramに載せています。</p></div>
+    <div class="ig-grid">
+      {IG_HTML}
+    </div>
+    <p class="more"><a href="{INSTA}" target="_blank" rel="noopener">Instagramを見る →</a></p>
   </div>
 </section>
 
@@ -230,12 +289,14 @@ TSUKURU_PRICE = """<table class="price">
   <tr><th>公式LINE</th><td><b>30,000円</b><span class="p-sub">開設・基本設定（2026年12月までのお申し込み）</span></td></tr>
   <tr><th>＋リッチメニュー</th><td><b>5,000円</b><span class="p-sub">トーク画面の下のボタン</span></td></tr>
   <tr><th>＋アイコン</th><td><b>5,000円</b></td></tr>
-  <tr><th>ホームページ</th><td><b>80,000円から</b><span class="p-sub">1ページ</span></td></tr>
+  <tr><th>ホームページ（Canvaで直せる形）</th><td><b>80,000円から</b><span class="p-sub">1ページ</span></td></tr>
+  <tr><th>ホームページ（AIで直せる形）</th><td><b>100,000円から</b><span class="p-sub">1ページ。AIで直す使い方の説明は、別に1時間3,000円</span></td></tr>
 </table>
 <ul class="price-notes">
   <li>作る日にお店で一緒に作る時間（2時間まで）は、料金に含みます。2時間を超えた分は、1時間3,000円です。</li>
   <li>作るかどうかを決める前の相談で伺う場合は、1回5,000円です。</li>
-  <li>ホームページはCanvaで作ります。あとからご自身で直せます。公開は無料のアドレス（〇〇.my.canva.site）です。お店独自のアドレスにする場合は、Canvaの有料プランとドメイン代（年1,000〜3,000円ほど）が、お店側でかかります。</li>
+  <li>Canvaで直せる形：あとからご自身でCanvaで直せます。公開は無料のアドレス（〇〇.my.canva.site）です。お店独自のアドレスにする場合は、Canvaの有料プランとドメイン代（年1,000〜3,000円ほど）が、お店側でかかります。</li>
+  <li>AIで直せる形：ページのファイル一式を、お店のアカウント（Cloudflare）に置いてお渡しします。直すときは、ChatGPTなどのAIに頼んで直します。</li>
   <li>ホームページの直しは1回まで。文章と写真は、お店側でご用意ください。</li>
 </ul>"""
 SERVICE = f"""
