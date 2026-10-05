@@ -251,3 +251,10 @@ a.gal:hover{ border-color:var(--accent); }
 .photo-ph{ display:flex; align-items:center; justify-content:center; text-align:center; background:var(--accent-soft); color:var(--accent); font-size:13px; font-weight:700; line-height:1.6; border:2px dashed #b9cfc6; }
 .profile-photo{ object-fit:cover; display:block; }
 @media (max-width:760px){ .photo-ph, .profile-photo{ width:160px; } }
+/* サービスのページ上のアイコン・実績の写真がまだ無いもの（2026年10月5日） */
+.svc-index{ margin-bottom:48px; }
+.svc-lead{ text-align:center; color:var(--sub); font-size:14px; margin:0 0 16px; }
+.block h3[id], .block[id]{ scroll-margin-top:80px; }
+.gal-img.icon{ display:flex; align-items:center; justify-content:center; color:#06c755; background:linear-gradient(135deg,#e9f7ee,#f4f2ec); }
+.gal-img.icon svg{ width:84px; height:84px; }
+.page-body .gal-grid{ margin-bottom:8px; }

@@ -26,7 +26,7 @@ def head(title, desc, root, path=""):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=10" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=11" />
 </head>
 <body>
 """
@@ -144,21 +144,36 @@ SERVICES = [
     ("talk", "相談", "始める前から、一緒に考えます", "service/#soudan"),
     ("web", "公式LINE・HP制作", "会って、その場で作ります", "tsukuru/"),
 ]
+ICON["line"] = svg('<path d="M24 8c-10 0-18 6.3-18 14 0 6.9 6.3 12.6 14.8 13.8L19 41l7.5-5.2C35.8 34.6 42 29 42 22c0-7.7-8-14-18-14z"/><path d="M15 19v7h4M23 19v7M28 26v-7l5 7v-7"/>')
 def svc_item(icon, name, sub, href):
-    return f'<a class="svc" href="{{root}}{href}"><span class="svc-icon">{ICON[icon]}</span><b>{name}</b><small>{sub}</small></a>'
+    url = href if href.startswith("#") else "{root}" + href  # サービスのページ内は #見出し へ飛ぶ
+    return f'<a class="svc" href="{url}"><span class="svc-icon">{ICON[icon]}</span><b>{name}</b><small>{sub}</small></a>'
+# サービスのページの上に並べる（押すと各説明へ）。TEToRAのサービス内容のページと同じ並び方
+SVC_PAGE_HTML = "".join(svc_item(i, n, s, h) for i, n, s, h in [
+    ("mahjong", "健康麻雀", "会・大会・初めての方の講座", "#mahjong"),
+    ("zazen", "座禅・写経", "住職が道具を持って伺います", "#zazen"),
+    ("dice", "子どもの遊び", "ボードゲーム・謎解き・学童", "#asobi"),
+    ("lecture", "研修・講座", "続ける話、告知の道具の使い方", "#tsuzuku"),
+    ("talk", "相談", "始める前から、一緒に考えます", "#soudan"),
+    ("web", "公式LINE・HP制作", "会って、その場で作ります", "#tsukuru"),
+])
 
 # ───────── 実績（画像つき・トップ） ─────────
 GALLERY = [
     ("健康麻雀", "images/mahjong-play.jpg", "公民館の健康麻雀講座", "定員8名に40名以上の申し込み。いまは月2回の講座に。", NOTE + "/n/n5e70d0323a00"),
     ("座禅", "images/zazen-kids.jpg", "学童での座禅", "約90人の子どもを、5つの組に分けて。", NOTE + "/n/nba5500e91aa4"),
-    ("子どもの遊び", "images/kids-boardgame.jpg", "子ども向けの遊びの時間", "低学年と高学年に分けてから、合流させる形で。", NOTE + "/n/n1e4b9bcd5b6c"),
+    ("謎解き", "images/results/nazotoki-kominkan.jpg", "公民館の謎解き脱出ゲーム", "市と共催。定員30名に29名。", NOTE + "/n/n4468e913ce5d"),
+    ("子どもの遊び", "images/results/sc-plaza.jpg", "S・Cプラザ（米原市）の遊びの時間", "小学生約20人を、低学年と高学年に分けてから合流。", NOTE + "/n/n1e4b9bcd5b6c"),
     ("講座", "images/seminar-lecture.jpg", "チラシ作り講座", "定員6名がすぐに埋まり、2回目を開きました。", NOTE + "/n/nf34be5c42627"),
     ("ホームページ", "images/works/site-chozenji.jpg", "長善寺のホームページ", "お寺の案内・座禅体験・永代供養墓。英語版も。", "https://chozenji.pages.dev/"),
-    ("チラシ", "images/works/flyer-course.jpg", "講座のチラシ", "ChatGPTとCanvaで、自分で作っています。", None),
 ]
 def gal_item(cat, img, title, text, url):
-    kind = " phone" if "/site-" in img else (" paper" if "/flyer-" in img else "")  # 画面・チラシは全体が見えるように
-    inner = f'<span class="gal-img{kind}"><img src="{{root}}{img}" alt="{title}" loading="lazy"></span><span class="gal-body"><span class="cat">■ {cat}</span><b>{title}</b><small>{text}</small></span>'
+    if img.startswith("icon:"):  # 写真がまだ無いもの（公式LINEの実物は、お店の許可が出てから）
+        pic = f'<span class="gal-img icon">{ICON[img[5:]]}</span>'
+    else:
+        kind = " phone" if "/site-" in img else (" paper" if "/flyer-" in img else "")  # 画面・チラシは全体が見えるように
+        pic = f'<span class="gal-img{kind}"><img src="{{root}}{img}" alt="{title}" loading="lazy"></span>'
+    inner = pic + f'<span class="gal-body"><span class="cat">■ {cat}</span><b>{title}</b><small>{text}</small></span>'
     if url:
         return f'<a class="gal" href="{url}" target="_blank" rel="noopener">{inner}</a>'
     return f'<div class="gal">{inner}</div>'
@@ -304,6 +319,13 @@ SERVICE = f"""
 <section class="page-head"><div class="wrap"><span class="en">SERVICE</span><h1>サービス</h1><p>中心は「場をひらく」と「続く形にする」の2つです。公式LINE・ホームページの制作もお受けしています。</p></div></section>
 <div class="page-body"><div class="wrap">
 
+<div class="block wide svc-index">
+  <p class="svc-lead">気になるものを押すと、説明へ移ります。</p>
+  <div class="svc-grid">
+    {SVC_PAGE_HTML}
+  </div>
+</div>
+
 <div class="block" id="hiraku">
   <h2>01　出張して、場をひらく</h2>
   <div class="photo-row">
@@ -311,11 +333,11 @@ SERVICE = f"""
     <figure><img src="../images/zazen-kids.jpg" alt="子どもたちへの座禅" loading="lazy"><figcaption>座禅</figcaption></figure>
     <figure><img src="../images/kids-boardgame.jpg" alt="子どものボードゲーム" loading="lazy"><figcaption>子どもの遊び</figcaption></figure>
   </div>
-  <h3>健康麻雀</h3>
+  <h3 id="mahjong">健康麻雀</h3>
   <p>会を開く／大会の企画・運営（組み合わせ、点数表、進行まで）／初めての方への講座。卓と牌を持って伺うので、会場に道具がなくても開けます。麻雀を知らない方も遊べる「4枚麻雀」の体験もできます。</p>
-  <h3>座禅・写経・仏教カフェ</h3>
+  <h3 id="zazen">座禅・写経・仏教カフェ</h3>
   <p>住職が伺います。座蒲や鐘など、お寺の道具を持って行きます。お寺に来ていただく形もできます。</p>
-  <h3>子どもの遊び</h3>
+  <h3 id="asobi">子どもの遊び</h3>
   <p>ボードゲーム会、謎解き・脱出ゲーム、学童・児童館への出張あそび。学年の幅が広くても、組を分けてから合流させる形で、一緒に遊べるように組みます。</p>
   <h3>向いている依頼の例</h3>
   <ul class="tag-list"><li>公民館の講座</li><li>高齢者サロン・地域の集まり</li><li>学童・子ども会・子ども食堂の行事</li><li>お祭り・フェスタのブース</li><li>市や団体の交流イベント</li></ul>
@@ -444,14 +466,30 @@ MORE_WORKS = [
     ("謎解き", "2026年6月", "市の事業の、婚活謎解きイベント（ホテル会場）", "委託を受けた団体から、企画・実施を担当。", NOTE + "/n/nee20e873fe28"),
     ("つくる", "2026年9月", "地域のお店の公式LINE", "開設からメニューまで、その日のうちに。", NOTE + "/n/n7ce9939c689e"),
 ]
+# 2026年10月5日：実績のページを写真つきに（TEToRAの制作実績と同じ並び方）。上の WORKS・MORE_WORKS は文の元として残す
+# 並び：（分類, 写真, 題, 日付｜ひとこと, noteなどのリンク）。足すときは、この表に1行足す
+RESULT_ITEMS = [
+    ("健康麻雀", "images/mahjong-play.jpg", "公民館の健康麻雀講座（全5回）", "2026年7〜9月｜市の広報での募集に、定員8名のところ40名以上の申し込み。12名・3卓に広げて開き、いまは月2回の講座に。", NOTE + "/n/n5e70d0323a00"),
+    ("健康麻雀", "images/ig/mahjong-kai.jpg", "月1回の健康麻雀会（高島市今津町）", "2026年9月｜数人から始めて、1回で24人。会場に置ける5卓（20人分）を超えました。", None),
+    ("健康麻雀", "images/results/mahjong-taikai.jpg", "健康麻雀大会", "2026年8月｜初めての大会の企画・運営。12名・3卓。", NOTE + "/n/n868f7aded76b"),
+    ("健康麻雀", "images/results/festa.jpg", "フェスタのブース", "2025年11月｜麻雀を知らない方も遊べる「4人で4枚麻雀」。", NOTE + "/n/nff7a4b1624c0"),
+    ("座禅", "images/zazen-kids.jpg", "学童での座禅", "2025年8月｜約90人の子どもを、20人弱ずつ5つの組に分けて。", NOTE + "/n/nba5500e91aa4"),
+    ("座禅", "images/results/zazen-table.jpg", "多文化共生の団体からのご依頼", "2025年10月｜未就学児を中心に、親子で約20名。", NOTE + "/n/n64e0cf92b93e"),
+    ("謎解き", "images/results/nazotoki-kominkan.jpg", "公民館の、子ども向け謎解き脱出ゲーム", "2026年2月｜市と共催。定員30名に29名。中学生のボランティア8名と一緒に運営しました。", NOTE + "/n/n4468e913ce5d"),
+    ("謎解き", "images/results/nazotoki-hotel.jpg", "市の事業の、婚活謎解きイベント（ホテル会場）", "2026年6月｜委託を受けた団体から、企画・実施を担当。", NOTE + "/n/nee20e873fe28"),
+    ("子どもの遊び", "images/results/sc-plaza.jpg", "S・Cプラザ（米原市）の子ども向け教室の遊びの時間", "2026年7月｜小学生約20人を、低学年と高学年に分けてから合流させる形で。", NOTE + "/n/n1e4b9bcd5b6c"),
+    ("講座", "images/seminar-lecture.jpg", "ChatGPTとCanvaのチラシ作り講座", "2026年7月｜定員6名がすぐに埋まり、同じ内容で2回目を開きました。", NOTE + "/n/nf34be5c42627"),
+    ("つくる", "icon:line", "地域のお店の公式LINE", "2026年9月｜開設からメニューまで、その日のうちに。", NOTE + "/n/n7ce9939c689e"),
+    ("つくる", "images/works/site-chozenji.jpg", "長善寺のホームページ", "2026年6月｜お寺の案内・座禅体験・永代供養墓。英語版も。", "https://chozenji.pages.dev/"),
+    ("つくる", "images/works/flyer-course.jpg", "講座・催しのチラシ", "ChatGPTとCanvaで、自分で作っています。", None),
+]
 def cat_section(name, items):
-    return f'<h2 class="cat-title">■ {name}</h2><div class="works-list">' + "".join(work_card(*w) for w in items) + "</div>"
-allw = WORKS + MORE_WORKS
+    return f'<h2 class="cat-title">■ {name}</h2><div class="gal-grid">' + "".join(gal_item(*w) for w in items) + "</div>"
 cats = ["健康麻雀", "座禅", "謎解き", "子どもの遊び", "講座", "つくる"]
 RESULTS = """
 <section class="page-head"><div class="wrap"><span class="en">RESULTS</span><h1>実績</h1><p>開いてきた場と、お受けした依頼です。くわしい様子は、活動報告（note）に書いています。</p></div></section>
 <div class="page-body"><div class="wrap">
-""" + "".join(cat_section(c, [w for w in allw if w[0] == c]) for c in cats if any(w[0] == c for w in allw)) + """
+""" + "".join(cat_section(c, [w for w in RESULT_ITEMS if w[0] == c]) for c in cats if any(w[0] == c for w in RESULT_ITEMS)) + """
 </div></div>
 """
 
