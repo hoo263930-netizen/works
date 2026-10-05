@@ -26,7 +26,7 @@ def head(title, desc, root, path=""):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=9" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=10" />
 </head>
 <body>
 """
@@ -455,13 +455,26 @@ RESULTS = """
 </div></div>
 """
 
+# ───────── 自己紹介：高島での実践（2026年10月5日。依頼の仕事の土台＝自分で開いている会） ─────────
+PRACTICE = [
+    ("健康麻雀", "images/ig/mahjong-kai.jpg", "健康麻雀会（今津町・月1回）", "数人から始めて、2026年9月には1回で24人。", None),
+    ("健康麻雀", "images/mahjong-play.jpg", "公民館の健康麻雀講座", "定員8名に40名以上の申し込み。いまは月2回の講座に。", NOTE + "/n/n5e70d0323a00"),
+    ("写経", "images/ig/shakyo-morning.jpg", "湖畔の朝 写経会", "朝6時から、湖のそばのカフェで。", None),
+    ("終活", "images/about/shukatsu.jpg", "終活カフェ（2026年10月〜）", "付箋に話したいことを書いて、みんなで話す。第1回は6名。", None),
+    ("多言語", "images/ig/taiwan-mahjong.jpg", "多言語カフェ（2026年10月〜）", "第1回は台湾。台湾のゲストと台湾麻雀。参加9名。", None),
+    ("ボードゲーム", "images/ig/boardgame.jpg", "ボードゲーム会", "子どもから大人まで、一緒に遊ぶ会。", None),
+    ("座禅", "images/zazen-kids.jpg", "学童での座禅", "約90人の子どもを、5つの組に分けて。", NOTE + "/n/nba5500e91aa4"),
+    ("講座", "images/seminar-lecture.jpg", "講座（Wan）", "チラシ作り・公式LINE・AI。パソコンが苦手な方にも。", NOTE + "/n/nf34be5c42627"),
+]
+PRACTICE_HTML = "".join(gal_item(*p) for p in PRACTICE)
+
 # ───────── 自己紹介 ─────────
 ABOUT = f"""
 <section class="page-head"><div class="wrap"><span class="en">PROFILE</span><h1>自己紹介</h1><p>お寺を、法事や儀式のときだけでなく、人が集まって、遊んで、話せる場所にしたい。そう考えて「遊べるお寺プロジェクト」を始めました。いまは、お寺の外にも出て、地域の場をひらいています。</p></div></section>
 <div class="page-body"><div class="wrap">
 <div class="block">
-  <div class="profile">
-    <div class="name"><b>こーせん</b><small>久我 光聖</small><small>遊べるお寺プロジェクト</small><small>住職・社会福祉士・保育士</small><small>滋賀県高島市</small></div>
+  <div class="profile with-photo">
+    <div class="name"><div class="photo-ph" role="img" aria-label="顔写真（準備中）">顔写真<br>（準備中）</div><b>こーせん</b><small>久我 光聖</small><small>遊べるお寺プロジェクト</small><small>住職・社会福祉士・保育士</small><small>滋賀県高島市</small></div>
     <div>
       <h3 style="margin-top:0">経歴</h3>
       <ul>
@@ -475,6 +488,13 @@ ABOUT = f"""
     </div>
   </div>
 </div>
+<div class="block wide">
+  <h2>高島での実践</h2>
+  <p>ご依頼の仕事は、高島で自分が開いている会から生まれています。自分で開いて、試して、続いたやり方を、講座や制作でお渡ししています。</p>
+  <div class="gal-grid">
+    {PRACTICE_HTML}
+  </div>
+</div>
 <div class="block">
   <h2>大事にしていること</h2>
   <ul class="tag-list"><li>続ける前提で始めない</li><li>一人で回せる仕組みをつくる</li></ul>
@@ -482,7 +502,7 @@ ABOUT = f"""
 </div>
 <div class="block">
   <h2>いま高島市で開いている会</h2>
-  <ul class="tag-list"><li>健康麻雀会（月1回）</li><li>健康麻雀講座（月2回）</li><li>ボードゲーム会</li><li>写経会</li><li>講座（チラシ作り・公式LINE・AI）</li></ul>
+  <ul class="tag-list"><li>健康麻雀会（月1回）</li><li>健康麻雀講座（月2回）</li><li>ボードゲーム会</li><li>写経会</li><li>終活カフェ</li><li>多言語カフェ</li><li>仏教カフェ</li><li>講座（チラシ作り・公式LINE・AI）</li></ul>
   <p>参加したい方は、<a href="{HP}/" target="_blank" rel="noopener">遊べるお寺プロジェクトのホームページ</a>へ。</p>
 </div>
 </div></div>

@@ -243,3 +243,11 @@ a.gal:hover{ border-color:var(--accent); }
 .gal-img.phone img, .gal-img.paper img{ width:auto; height:100%; object-fit:contain; }
 .gal-img.phone img{ border:5px solid #1f2a30; border-radius:16px; background:#fff; }
 .gal-img.paper img{ box-shadow:0 4px 12px rgba(0,0,0,.15); }
+/* 自己紹介：顔写真の枠・高島での実践（2026年10月5日） */
+.block.wide{ max-width:var(--maxw); }
+.block.wide > p{ max-width:860px; }
+.profile.with-photo .name{ border-left:none; padding-left:0; }
+.photo-ph, .profile-photo{ width:200px; aspect-ratio:1/1; border-radius:50%; margin:0 0 16px; }
+.photo-ph{ display:flex; align-items:center; justify-content:center; text-align:center; background:var(--accent-soft); color:var(--accent); font-size:13px; font-weight:700; line-height:1.6; border:2px dashed #b9cfc6; }
+.profile-photo{ object-fit:cover; display:block; }
+@media (max-width:760px){ .photo-ph, .profile-photo{ width:160px; } }
