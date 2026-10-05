@@ -26,7 +26,7 @@ def head(title, desc, root, path=""):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=8" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=9" />
 </head>
 <body>
 """
@@ -157,7 +157,8 @@ GALLERY = [
     ("チラシ", "images/works/flyer-course.jpg", "講座のチラシ", "ChatGPTとCanvaで、自分で作っています。", None),
 ]
 def gal_item(cat, img, title, text, url):
-    inner = f'<span class="gal-img"><img src="{{root}}{img}" alt="{title}" loading="lazy"></span><span class="gal-body"><span class="cat">■ {cat}</span><b>{title}</b><small>{text}</small></span>'
+    kind = " phone" if "/site-" in img else (" paper" if "/flyer-" in img else "")  # 画面・チラシは全体が見えるように
+    inner = f'<span class="gal-img{kind}"><img src="{{root}}{img}" alt="{title}" loading="lazy"></span><span class="gal-body"><span class="cat">■ {cat}</span><b>{title}</b><small>{text}</small></span>'
     if url:
         return f'<a class="gal" href="{url}" target="_blank" rel="noopener">{inner}</a>'
     return f'<div class="gal">{inner}</div>'

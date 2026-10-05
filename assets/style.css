@@ -238,3 +238,8 @@ a.gal:hover{ border-color:var(--accent); }
 
 /* 料金表：長い見出しをスマホで折り返す */
 @media (max-width:600px){ table.price th{ white-space:normal; width:38%; } }
+/* 実績：サイトの画面はスマホの枠に、チラシは全体を見せる */
+.gal-img.phone, .gal-img.paper{ background:linear-gradient(135deg,#e8efec,#f4f2ec); padding:16px 0; display:flex; justify-content:center; }
+.gal-img.phone img, .gal-img.paper img{ width:auto; height:100%; object-fit:contain; }
+.gal-img.phone img{ border:5px solid #1f2a30; border-radius:16px; background:#fff; }
+.gal-img.paper img{ box-shadow:0 4px 12px rgba(0,0,0,.15); }
