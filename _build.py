@@ -26,7 +26,7 @@ def head(title, desc, root, path="", noindex=False):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=12" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=13" />
 </head>
 <body>
 """
@@ -623,8 +623,18 @@ TAKASHIMAJAN = f"""
 <div class="block" id="shiryo">
   <h2>ルールの資料を、無料でお届けします</h2>
   <p>初級・中級・上級のルールの紙と、麻雀牌の読み方表（A4・印刷用）です。<b>自由にコピーしてお使いください。</b></p>
-  <p>下の欄にメールアドレスを入れると、資料のダウンロード先がすぐメールで届きます。</p>
+  <p>下の欄にメールアドレスを入れると、資料のダウンロード先がメールで届きます。</p>
   <div class="note-box">あわせて、こーせんのメールマガジン（地域活動や、たかしまーじゃんのお知らせ）に登録されます。いつでも、メールの下のリンクから解除できます。</div>
+  <div class="howto">
+    <b>登録のしかた</b>
+    <ol>
+      <li>下の欄にメールアドレスを入れて、オレンジのボタン（Subscribe）を押す</li>
+      <li>英語の画面がいくつか出ます。いちばん下の灰色の文字（Skip for now／Maybe later）を押して進めてください</li>
+      <li>「Please confirm your subscription」という英語のメールが届きます。オレンジのボタン（Confirm subscription）を押してください</li>
+      <li>次に届くメールに、資料のダウンロード先があります</li>
+    </ol>
+    <p>うまくいかないときは、公式LINEかメールでお知らせください。資料をお送りします。</p>
+  </div>
   <div class="substack-embed"><iframe src="{SUBSTACK}/embed" title="メールアドレスの登録" width="480" height="150" frameborder="0" scrolling="no"></iframe></div>
 </div>
 

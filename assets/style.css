@@ -261,3 +261,8 @@ a.gal:hover{ border-color:var(--accent); }
 /* たかしまーじゃん（2026-10-07） */
 .substack-embed{ margin-top:20px; }
 .substack-embed iframe{ width:100%; max-width:480px; border:1px solid var(--line); border-radius:8px; background:#fff; }
+.howto{ border:2px solid var(--accent); border-radius:10px; padding:18px 22px; margin-top:20px; background:#fff; }
+.howto b{ font-size:17px; }
+.howto ol{ margin:10px 0 8px; padding-left:1.4em; }
+.howto li{ margin:6px 0; }
+.howto p{ margin:0; font-size:14px; color:var(--sub); }
