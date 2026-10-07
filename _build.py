@@ -635,7 +635,7 @@ TAKASHIMAJAN = f"""
     </ol>
     <p>うまくいかないときは、公式LINEかメールでお知らせください。資料をお送りします。</p>
   </div>
-  <div class="substack-embed"><iframe src="{SUBSTACK}/embed" title="メールアドレスの登録" width="480" height="150" frameborder="0" scrolling="no"></iframe></div>
+  <div class="substack-embed"><iframe src="{SUBSTACK}/embed" title="メールアドレスの登録" width="480" height="320" frameborder="0" scrolling="no"></iframe></div>
 </div>
 
 <div class="block">
