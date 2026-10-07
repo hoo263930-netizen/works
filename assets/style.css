@@ -258,3 +258,6 @@ a.gal:hover{ border-color:var(--accent); }
 .gal-img.icon{ display:flex; align-items:center; justify-content:center; color:#06c755; background:linear-gradient(135deg,#e9f7ee,#f4f2ec); }
 .gal-img.icon svg{ width:84px; height:84px; }
 .page-body .gal-grid{ margin-bottom:8px; }
+/* たかしまーじゃん（2026-10-07） */
+.substack-embed{ margin-top:20px; }
+.substack-embed iframe{ width:100%; max-width:480px; border:1px solid var(--line); border-radius:8px; background:#fff; }

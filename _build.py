@@ -13,7 +13,7 @@ SITE = "https://asoberu-otera-works.pages.dev/"  # 2026年10月1日、GitHub Pag
 
 NAV = [("", "ホーム"), ("service/", "サービス"), ("results/", "実績"), ("about/", "自己紹介")]
 
-def head(title, desc, root, path=""):
+def head(title, desc, root, path="", noindex=False):
     return f"""<!doctype html>
 <html lang="ja">
 <head>
@@ -21,12 +21,12 @@ def head(title, desc, root, path=""):
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script>/* 古い住所（github.io/works）で開かれたら、新しい住所の同じページへ移す */if(/\\.github\\.io$/.test(location.hostname)){{location.replace("{SITE}"+location.pathname.replace(/^\\/works\\/?/,"")+location.search+location.hash);}}</script>
   <title>{title}</title>
-  <link rel="canonical" href="{SITE}{path}" />
+{'  <meta name="robots" content="noindex" />' + chr(10) if noindex else ""}  <link rel="canonical" href="{SITE}{path}" />
   <meta name="description" content="{desc}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=11" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=12" />
 </head>
 <body>
 """
@@ -73,6 +73,7 @@ def footer(root):
         <li><a href="{root}service/">サービス</a></li>
         <li><a href="{root}results/">実績</a></li>
         <li><a href="{root}about/">自己紹介</a></li>
+        <li><a href="{root}takashimajan/">たかしまーじゃん</a></li>
         <li><a href="{root}contact/">お問い合わせ</a></li>
       </ul>
       <ul>
@@ -90,9 +91,9 @@ def footer(root):
 </html>
 """
 
-def page(path, current, title, desc, body):
+def page(path, current, title, desc, body, noindex=False):
     root = "../" * path.count("/")
-    html = head(title, desc, root, path) + header(root, current) + "<main>\n" + body.replace("{root}", root) + "</main>\n" + cta_band(root) + footer(root)
+    html = head(title, desc, root, path, noindex) + header(root, current) + "<main>\n" + body.replace("{root}", root) + "</main>\n" + cta_band(root) + footer(root)
     out = path + "index.html" if path.endswith("/") or path == "" else path
     if path == "":
         out = "index.html"
@@ -574,9 +575,101 @@ CONTACT = f"""
 </div></div>
 """
 
+
+# ───────── たかしまーじゃん（2026年10月7日・本人「worksの中にページを作るべき」） ─────────
+# 入口のページ（チラシ・セミナー・YouTube・Kindleの巻末のQRは全部ここ）と、メニューに出さない資料のページ（Substackの最初のメールからだけ案内する）
+SUBSTACK = "https://kosen3.substack.com"
+SHIRYO = "takashimajan/shiryo-7k3m/"   # 資料のページ（隠し部屋）。URLを変えるときは、Substackの最初のメールも直す
+
+TAKASHIMAJAN = f"""
+<section class="page-head"><div class="wrap"><span class="en">TAKASHIMA MAHJONG</span><h1>たかしまーじゃん</h1><p><span class="nb">麻雀を知らなくても、</span><span class="nb">牌だけあれば遊べる。</span><span class="nb">滋賀・高島で生まれた、</span><span class="nb">いちばんやさしい麻雀です。</span></p></div></section>
+<div class="page-body"><div class="wrap">
+
+<div class="block">
+  <h2>たかしまーじゃんとは</h2>
+  <ul class="worries">
+    <li><b>た</b>のしい</li>
+    <li><b>か</b>んたん</li>
+    <li><b>し</b>ょうがい できる</li>
+  </ul>
+  <p>台湾の麻雀をヒントに作った、役がなくても上がれる麻雀です。山を作らず、牌を伏せて真ん中に広げ、好きな1枚を取ります。捨てるときは、牌の名前を声に出して言います。</p>
+  <ul>
+    <li>牌だけあればできます（点数計算はいりません）</li>
+    <li>3〜5人で遊べます</li>
+    <li>声を出して、手を動かす。ふつうの麻雀より、にぎやかです</li>
+  </ul>
+</div>
+
+<div class="block">
+  <h2>3つの段で、ふつうの麻雀まで</h2>
+  <div class="cards">
+    <div class="card"><span class="num">初級</span><h3>4枚からはじめる</h3><p>4枚から始めて、上がるたびに3枚ずつ増えます。13枚で上がったら勝ち。牌の名前と、上がりの形を覚えます。</p></div>
+    <div class="card"><span class="num">中級</span><h3>13枚で、チー・ポン</h3><p>最初から13枚。チー・ポンを使って、上がった回数を競います。</p></div>
+    <div class="card"><span class="num">上級</span><h3>役と、かんたんな点数</h3><p>役（6つ）と、碁石を使ったかんたんな点数。ここまでできたら、ふつうの麻雀へ。</p></div>
+  </div>
+  <p>どの段で止めても、それだけで遊びとして楽しめます。</p>
+</div>
+
+<div class="block">
+  <h2>こんな場所で</h2>
+  <ul>
+    <li>地域のサロン・自治会の集まりの出し物に</li>
+    <li>高齢者施設・デイサービスのレクリエーションに</li>
+    <li>麻雀をやってみたいけれど、難しそうと思っている方に</li>
+  </ul>
+  <p>ルールの紙を見ながら、みなさんだけで回せるように作っています。</p>
+</div>
+
+<div class="block" id="shiryo">
+  <h2>ルールの資料を、無料でお届けします</h2>
+  <p>初級・中級・上級のルールの紙と、麻雀牌の読み方表（A4・印刷用）です。<b>自由にコピーしてお使いください。</b></p>
+  <p>下の欄にメールアドレスを入れると、資料のダウンロード先がすぐメールで届きます。</p>
+  <div class="note-box">あわせて、こーせんのメールマガジン（地域活動や、たかしまーじゃんのお知らせ）に登録されます。いつでも、メールの下のリンクから解除できます。</div>
+  <div class="substack-embed"><iframe src="{SUBSTACK}/embed" title="メールアドレスの登録" width="480" height="150" frameborder="0" scrolling="no"></iframe></div>
+</div>
+
+<div class="block">
+  <h2>これから</h2>
+  <ul>
+    <li><b>2026年11月</b>：高島市内のイベントでお披露目します</li>
+    <li><b>2026年12月から</b>：講習会をはじめます（日にちは決まりしだい、ここでお知らせします）</li>
+    <li><b>ハンドブック</b>（Amazon）と<b>遊び方の動画</b>（YouTube）：準備中です</li>
+  </ul>
+</div>
+
+<p class="note-box">考案：遊べるお寺プロジェクト（滋賀県高島市）こーせん。お寺の住職で、健康麻雀の講師をしています。</p>
+
+</div></div>
+"""
+
+def shiryo_item(img, name, text):
+    if img:
+        pic = f'<a class="gal-img" href="{{root}}images/takashimajan/{img}" target="_blank" rel="noopener"><img src="{{root}}images/takashimajan/{img}" alt="{name}" loading="lazy"></a>'
+        dl = f'<a class="btn-sub" href="{{root}}images/takashimajan/{img}" download>ダウンロード</a>'
+    else:
+        pic, dl = '<div class="gal-img"></div>', '<span class="note-box">準備中</span>'
+    return f'<div class="gal">{pic}<div class="card-body"><h3>{name}</h3><p>{text}</p>{dl}</div></div>'
+
+TAKASHIMAJAN_SHIRYO = f"""
+<section class="page-head"><div class="wrap"><span class="en">RULES</span><h1>たかしまーじゃん ルール資料</h1><p>ご登録ありがとうございます。A4で印刷して、自由にコピーしてお使いください。</p></div></section>
+<div class="page-body"><div class="wrap">
+<div class="block">
+  <div class="gal-grid">
+    {shiryo_item("shokyu.webp", "初級", "4枚からはじめる、いちばんやさしい麻雀")}
+    {shiryo_item("chukyu.webp", "中級", "13枚で、チー・ポンを覚えよう")}
+    {shiryo_item("", "上級", "役と、かんたんな点数を覚えよう")}
+    {shiryo_item("yomikata.webp", "麻雀牌の読み方表", "捨てるときに、名前を言ってみよう（A4横）")}
+  </div>
+  <p class="note-box">遊び方の説明は、<a href="{{root}}takashimajan/">たかしまーじゃんのページ</a>にあります。分からないことは、公式LINEかメールでお気軽にどうぞ。</p>
+</div>
+</div></div>
+"""
+
 page("", "", "遊べるお寺プロジェクト｜ご依頼・ご相談", "地域の「人が集まる場」を、ひらいて、続く形にします。健康麻雀・座禅・ボードゲームで場をひらく、滋賀・高島のお坊さん。", TOP)
 page("service/", "service/", "サービス｜遊べるお寺プロジェクト ご依頼・ご相談", "出張して場をひらく／続く形にする（研修・講座・講演）／相談にのる／つくる（公式LINE・ホームページ）", SERVICE)
 page("results/", "results/", "実績｜遊べるお寺プロジェクト ご依頼・ご相談", "健康麻雀・座禅・謎解き・講座など、これまでに開いた場とお受けした依頼。", RESULTS)
 page("about/", "about/", "自己紹介｜遊べるお寺プロジェクト ご依頼・ご相談", "こーせん（久我光聖）。住職・社会福祉士・保育士。滋賀県高島市。", ABOUT)
 page("tsukuru/", "tsukuru/", "公式LINE・ホームページ制作｜遊べるお寺プロジェクト ご依頼・ご相談", "高島のお店・教室・小さな事業者のための、公式LINEとホームページづくり。会って、その場で作ります。", TSUKURU)
 page("contact/", "contact/", "お問い合わせ｜遊べるお寺プロジェクト ご依頼・ご相談", "公式LINEかお問い合わせフォームから。", CONTACT)
+page("takashimajan/", "", "たかしまーじゃん｜遊べるお寺プロジェクト", "麻雀を知らなくても、牌だけあれば遊べる。滋賀・高島で生まれた、いちばんやさしい麻雀「たかしまーじゃん」。ルールの資料を無料でお届けします。", TAKASHIMAJAN)
+page(SHIRYO, "", "たかしまーじゃん ルール資料｜遊べるお寺プロジェクト", "たかしまーじゃんのルール資料（初級・中級・上級・麻雀牌の読み方表）。", TAKASHIMAJAN_SHIRYO, noindex=True)
