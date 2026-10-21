@@ -26,7 +26,7 @@ def head(title, desc, root, path=""):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{root}assets/style.css?v=7" />
+  <link rel="stylesheet" href="{root}assets/style.css?v=8" />
 </head>
 <body>
 """
@@ -73,6 +73,7 @@ def footer(root):
         <li><a href="{root}service/">サービス</a></li>
         <li><a href="{root}results/">実績</a></li>
         <li><a href="{root}about/">自己紹介</a></li>
+        <li><a href="{root}haifu/">配布物</a></li>
         <li><a href="{root}contact/">お問い合わせ</a></li>
       </ul>
       <ul>
@@ -454,9 +455,151 @@ CONTACT = f"""
 </div></div>
 """
 
+# ───────── Substack（名簿）の登録欄（redesign のたかしまーじゃんの段と同じもの） ─────────
+SUBSTACK = "https://kosen3.substack.com"
+
+SUBSCRIBE_HOWTO = f"""<div class="howto">
+    <b>登録のしかた</b>
+    <ol>
+      <li>下の欄にメールアドレスを入れて、オレンジのボタン（Subscribe）を押す</li>
+      <li>英語の画面がいくつか出ます。いちばん下の灰色の文字（Skip for now／Maybe later）を押して進めてください</li>
+      <li>「Please confirm your subscription」という英語のメールが届きます。オレンジのボタン（Confirm subscription）を押すと、登録が終わります</li>
+    </ol>
+    <p>うまくいかないときは、公式LINEかメールでお知らせください。</p>
+  </div>
+  <div class="substack-embed"><iframe src="{SUBSTACK}/embed" title="メールアドレスの登録" width="480" height="320" frameborder="0" scrolling="no"></iframe></div>"""
+
+# ───────── 配布物（2026年10月21日・本人「ワークスみたいにね、私のやっぱところに集約していく」） ─────────
+# ダウンロードは誰でも（登録なし）。新しい版のお知らせは Substack（名簿）。伴走のzipは scratchpad の make_banso_zip.py で作る
+FORMSPREE = "https://formspree.io/f/mrbybkoe"   # 今のHPのお問い合わせフォームと同じ受け口（届くのは同じメール）
+BANSO_ZIP = "banso-0.9.zip"                      # 版を上げたら、functions/haifu/banso/dl.js の FILE も直す
+
+HAIFU = f"""
+<section class="page-head"><div class="wrap"><span class="en">FREE DOWNLOADS</span><h1>配布物</h1><p><span class="nb">無料で使える、</span><span class="nb">資料と道具です。</span></p></div></section>
+<div class="page-body"><div class="wrap">
+
+<div class="block">
+  <div class="works-list">
+    <a class="work" href="{{root}}haifu/banso/"><span class="cat">AIの手引き</span><span class="date">試作版・2026年10月</span><h3>伴走｜チラシができるまで</h3><p>AIにチラシを頼む前に、「完成形のイメージ」を一緒に作る手引き。Claude Code と ChatGPT で使えます。</p><span class="go">くわしく見る →</span></a>
+    <a class="work" href="{HP}/takashimahjong/" target="_blank" rel="noopener"><span class="cat">遊びのルール</span><span class="date">2026年10月</span><h3>たかしまーじゃん ルール資料</h3><p>牌だけあれば遊べる、いちばんやさしい麻雀。初級・中級・上級のルールの紙と、麻雀牌の読み方表（A4・印刷用）。登録なしでダウンロードできます。</p><span class="go">くわしく見る（遊べるお寺プロジェクトのHP）→</span></a>
+  </div>
+</div>
+
+<div class="block">
+  <h2>新しい版のお知らせ</h2>
+  <p>配布物を直したときや、新しいものを出したときは、メール（Substack）でお知らせします。地域活動の話も、ときどき書いています。</p>
+  <div class="btns"><a class="btn primary" href="{SUBSTACK}/subscribe" target="_blank" rel="noopener">お知らせをメールで受け取る</a></div>
+</div>
+
+</div></div>
+"""
+
+BANSO = f"""
+<section class="page-head"><div class="wrap"><span class="en">FREE TRIAL</span><h1>伴走｜チラシができるまで</h1><p><span class="nb">AIにチラシを頼む前に、</span><span class="nb">「完成形のイメージ」を</span><span class="nb">一緒に作る手引きです。</span><span class="nb">試作版を、無料で配っています。</span></p></div></section>
+<div class="page-body"><div class="wrap">
+
+<div class="block">
+  <h2>こんなときに</h2>
+  <ul class="worries">
+    <li>AIにチラシを頼んだら、ごちゃごちゃしたものが返ってきた</li>
+    <li>イメージと違うけれど、どう直せばいいか分からない</li>
+    <li>毎回、何をどう頼めばいいか迷う</li>
+  </ul>
+  <p>原因はAIの性能ではなく、頼む側に「完成形のイメージ」がないまま頼んでいることにあります。伴走は、そのイメージを作るところを一緒にやります。</p>
+</div>
+
+<div class="block">
+  <h2>進み方</h2>
+  <ol class="flow">
+    <li><h3>質問に答える</h3><p>19の質問が一覧で出ます。音声入力で一気に答えてかまいません。分からない欄は空欄のまま進めます。</p></li>
+    <li><h3>構成案を選ぶ</h3><p>タイトル・キャッチ・一番大きく見せるもの・色などを、3案とおすすめ1つ、その理由つきで出します。</p></li>
+    <li><h3>指示文で画像へ</h3><p>画像を作るAIに渡す指示文ができます。日時や金額は描き込ませず、あとから Canva などで入れます。</p></li>
+  </ol>
+  <p>デザインの画像そのものは作りません。画像は、ChatGPT・Canva など、お使いのもので作ります。</p>
+</div>
+
+<div class="block" id="dl">
+  <h2>ダウンロード（無料）</h2>
+  <p>zipファイル（14KB）です。中に、使い方の説明（README）が入っています。</p>
+  <div class="btns"><a class="btn primary" href="{{root}}haifu/banso/dl" download="{BANSO_ZIP}">無料でダウンロード（試作版 0.9）</a></div>
+  <div class="note-box"><b>試作版です。</b>使ってみた感想を、下のフォームから聞かせてください。次の版づくりに使います。<br />作ったチラシは、お仕事を含めて自由に使えます。ほかの方に紹介するときは、ファイルではなく、このページのリンクを伝えてください（新しい版が届くように）。</div>
+</div>
+
+<div class="block">
+  <h2>使い方</h2>
+  <p>くわしくは、zipの中の README にあります。</p>
+  <h3>Claude Code で使う</h3>
+  <ol>
+    <li>zipを開いて、<code>design-brief</code> フォルダを <code>.claude/skills</code> の中へ、フォルダごと入れる</li>
+    <li>新しいチャットを開く</li>
+    <li>「チラシを作りたい」と話しかける</li>
+  </ol>
+  <h3>ChatGPT で使う</h3>
+  <ol>
+    <li>「プロジェクト」を新しく作る</li>
+    <li>プロジェクトの「ファイル」に <code>chatgpt/伴走.md</code> を入れる</li>
+    <li>「指示」の欄に、READMEにある1行を貼る</li>
+    <li>そのプロジェクトの中で「チラシを作りたい」と話しかける</li>
+  </ol>
+  <p class="note-box">使うには、Claude Code（Anthropic の有料プラン）か、ChatGPT の「プロジェクト」の機能が要ります。</p>
+</div>
+
+<div class="block" id="kansou">
+  <h2>感想を聞かせてください</h2>
+  <p>ひとことでも助かります。お名前はいりません。</p>
+  <form class="fb-form" action="{FORMSPREE}" method="POST">
+    <fieldset>
+      <legend>使ったもの</legend>
+      <div class="choices">
+        <label><input type="radio" name="使ったもの" value="Claude Code" /> Claude Code</label>
+        <label><input type="radio" name="使ったもの" value="ChatGPT" /> ChatGPT</label>
+        <label><input type="radio" name="使ったもの" value="そのほか" /> そのほか</label>
+      </div>
+    </fieldset>
+    <div><label for="fb-made">何を作りましたか</label><input type="text" id="fb-made" name="作ったもの" placeholder="例：教室のチラシ、イベントのバナー" /></div>
+    <div><label for="fb-good">よかったところ</label><textarea id="fb-good" name="よかったところ"></textarea></div>
+    <div><label for="fb-bad">困ったところ・分かりにくかったところ</label><textarea id="fb-bad" name="困ったところ"></textarea></div>
+    <div><label for="fb-mail">メールアドレス<span class="opt">返事がほしい方だけ</span></label><input type="email" id="fb-mail" name="email" /></div>
+    <input type="hidden" name="_subject" value="伴走 試作版の感想" />
+    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" />
+    <button type="submit">送る</button>
+    <p class="done" hidden>ありがとうございました。届きました。</p>
+  </form>
+</div>
+
+<div class="block">
+  <h2>新しい版のお知らせ</h2>
+  <p>新しい版ができたら、メール（Substack）でお知らせします。たかしまーじゃんなど、ほかの配布物のお知らせも同じメールで届きます。いつでも、メールの下のリンクから解除できます。</p>
+  {SUBSCRIBE_HOWTO}
+</div>
+
+<div class="block">
+  <h2>質問・相談</h2>
+  <p>使い方の質問や、チラシづくりの相談を受ける窓口（公式LINE）を準備しています。それまでは、上のフォームか、メール（<a href="mailto:{MAIL}">{MAIL}</a>）でどうぞ。</p>
+</div>
+
+<p class="note-box">作った人：遊べるお寺プロジェクト　こーせん（久我光聖）。滋賀県高島市で、健康麻雀・写経会・チラシ作り講座などをやっているお坊さんです。自分のチラシを作る中で、この手引きができました。→ <a href="{{root}}about/">自己紹介</a></p>
+
+</div></div>
+<script>
+/* 感想フォーム：送ったあと、ページを移らずにお礼を出す（JSが動かないときは、ふつうに送られる） */
+document.querySelectorAll(".fb-form").forEach(function(f){{
+  f.addEventListener("submit", function(e){{
+    e.preventDefault();
+    var b = f.querySelector("button"); b.disabled = true; b.textContent = "送っています…";
+    fetch(f.action, {{method:"POST", body:new FormData(f), headers:{{"Accept":"application/json"}}}})
+      .then(function(r){{ if(!r.ok) throw r; f.reset(); b.hidden = true; f.querySelector(".done").hidden = false; }})
+      .catch(function(){{ b.disabled = false; b.textContent = "送る"; alert("うまく送れませんでした。時間をおいて、もう一度お試しください。"); }});
+  }});
+}});
+</script>
+"""
+
 page("", "", "遊べるお寺プロジェクト｜ご依頼・ご相談", "地域の「人が集まる場」を、ひらいて、続く形にします。健康麻雀・座禅・ボードゲームで場をひらく、滋賀・高島のお坊さん。", TOP)
 page("service/", "service/", "サービス｜遊べるお寺プロジェクト ご依頼・ご相談", "出張して場をひらく／続く形にする（研修・講座・講演）／相談にのる／つくる（公式LINE・ホームページ）", SERVICE)
 page("results/", "results/", "実績｜遊べるお寺プロジェクト ご依頼・ご相談", "健康麻雀・座禅・謎解き・講座など、これまでに開いた場とお受けした依頼。", RESULTS)
 page("about/", "about/", "自己紹介｜遊べるお寺プロジェクト ご依頼・ご相談", "こーせん（久我光聖）。住職・社会福祉士・保育士。滋賀県高島市。", ABOUT)
 page("tsukuru/", "tsukuru/", "公式LINE・ホームページ制作｜遊べるお寺プロジェクト ご依頼・ご相談", "高島のお店・教室・小さな事業者のための、公式LINEとホームページづくり。会って、その場で作ります。", TSUKURU)
 page("contact/", "contact/", "お問い合わせ｜遊べるお寺プロジェクト ご依頼・ご相談", "公式LINEかお問い合わせフォームから。", CONTACT)
+page("haifu/", "haifu/", "配布物｜遊べるお寺プロジェクト", "無料で使える資料と道具。AIでチラシを作る手引き「伴走」、いちばんやさしい麻雀「たかしまーじゃん」のルール資料。", HAIFU)
+page("haifu/banso/", "haifu/banso/", "伴走｜チラシができるまで（試作版・無料）｜遊べるお寺プロジェクト", "AIにチラシを頼む前に、「完成形のイメージ」を一緒に作る手引き。Claude Code と ChatGPT で使えます。試作版を無料で配っています。", BANSO)

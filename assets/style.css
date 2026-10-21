@@ -190,3 +190,27 @@ ul.price-notes li{ margin:4px 0; }
 .voice blockquote{ margin:0 0 12px; font-size:15px; line-height:1.9; }
 .voice figcaption{ font-size:12px; color:var(--sub); }
 @media (max-width:900px){ .voices{ grid-template-columns:1fr; } }
+/* Substackの登録欄（redesign のたかしまーじゃんと同じ・2026-10-21） */
+.substack-embed{ margin-top:20px; }
+.substack-embed iframe{ width:100%; max-width:480px; border:1px solid var(--line); border-radius:8px; background:#fff; }
+.howto{ border:2px solid var(--accent); border-radius:10px; padding:18px 22px; margin-top:20px; background:#fff; }
+.howto b{ font-size:17px; }
+.howto ol{ margin:10px 0 8px; padding-left:1.4em; }
+.howto li{ margin:6px 0; }
+.howto p{ margin:0; font-size:14px; color:var(--sub); }
+/* 配布物・伴走（2026-10-21） */
+.block .worries{ padding-left:0; }
+.block code{ font-size:14px; background:var(--bg-soft); padding:1px 6px; border-radius:4px; word-break:break-all; }
+.fb-form{ display:grid; gap:18px; max-width:640px; margin-top:16px; }
+.fb-form label, .fb-form legend{ display:block; font-weight:700; font-size:15px; margin-bottom:6px; padding:0; }
+.fb-form .opt{ font-weight:400; color:var(--sub); font-size:13px; margin-left:8px; }
+.fb-form input[type=text], .fb-form input[type=email], .fb-form textarea{ width:100%; font:inherit; font-size:16px; padding:10px 12px; border:1px solid #c9d0d5; border-radius:6px; background:#fff; color:var(--ink); }
+.fb-form textarea{ min-height:110px; resize:vertical; }
+.fb-form fieldset{ border:0; margin:0; padding:0; min-width:0; }
+.fb-form .choices{ display:flex; flex-wrap:wrap; gap:6px 22px; }
+.fb-form .choices label{ display:inline-flex; align-items:center; gap:6px; font-weight:400; margin:0; }
+.fb-form button{ justify-self:start; font:inherit; font-weight:700; font-size:15px; letter-spacing:.05em; padding:14px 32px; border:0; border-radius:6px; background:var(--accent); color:#fff; cursor:pointer; }
+.fb-form button:disabled{ opacity:.6; cursor:default; }
+.fb-form .done{ margin:0; font-weight:700; color:var(--accent); }
+.fb-form .hp{ position:absolute; left:-9999px; width:1px; height:1px; }
+@media (max-width:760px){ .fb-form button{ justify-self:stretch; } }
