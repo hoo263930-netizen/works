@@ -696,7 +696,7 @@ HAIFU = f"""
 <div class="block">
   <div class="works-list">
     <a class="work" href="{{root}}haifu/banso/"><span class="cat">AIの手引き</span><span class="date">試作版・2026年10月</span><h3>伴走｜チラシができるまで</h3><p>AIにチラシを頼む前に、「完成形のイメージ」を一緒に作る手引き。Claude Code と ChatGPT で使えます。</p><span class="go">くわしく見る →</span></a>
-    <a class="work" href="{{root}}takashimajan/"><span class="cat">遊びのルール</span><span class="date">2026年10月</span><h3>たかしまーじゃん ルール資料</h3><p>牌だけあれば遊べる、いちばんやさしい麻雀。ルールの紙と、麻雀牌の読み方表（A4・印刷用）。登録なしでダウンロードできます。</p><span class="go">くわしく見る →</span></a>
+    <a class="work" href="{HP}/takashimahjong/" target="_blank" rel="noopener"><span class="cat">遊びのルール</span><span class="date">2026年10月</span><h3>たかしまーじゃん ルール資料</h3><p>牌だけあれば遊べる、いちばんやさしい麻雀。初級・中級・上級のルールの紙と、麻雀牌の読み方表（A4・印刷用）。登録なしでダウンロードできます。</p><span class="go">くわしく見る（遊べるお寺プロジェクトのHP）→</span></a>
   </div>
 </div>
 
