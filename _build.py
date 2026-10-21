@@ -581,6 +581,33 @@ CONTACT = f"""
 # 入口のページ（チラシ・セミナー・YouTube・Kindleの巻末のQRは全部ここ）と、メニューに出さない資料のページ（Substackの最初のメールからだけ案内する）
 SUBSTACK = "https://kosen3.substack.com"
 SHIRYO = "takashimajan/shiryo-7k3m/"   # 資料のページ（隠し部屋）。URLを変えるときは、Substackの最初のメールも直す
+# 2026年10月21日、資料は登録なしでダウンロードできる形に変えた（本人「ダウンロードは誰でもできるようにしといて、更新のお知らせを受け取る形がいいね」）。隠し部屋は、前に登録した人のメールのために残す
+
+def shiryo_item(img, name, text):
+    if img:
+        pic = f'<a class="gal-img" href="{{root}}images/takashimajan/{img}" target="_blank" rel="noopener"><img src="{{root}}images/takashimajan/{img}" alt="{name}" loading="lazy"></a>'
+        dl = f'<a class="btn-sub" href="{{root}}images/takashimajan/{img}" download>ダウンロード</a>'
+    else:
+        pic, dl = '<div class="gal-img"></div>', '<span class="note-box">準備中</span>'
+    return f'<div class="gal">{pic}<div class="card-body"><h3>{name}</h3><p>{text}</p>{dl}</div></div>'
+
+SHIRYO_GRID = f"""<div class="gal-grid">
+    {shiryo_item("shokyu.webp", "初級", "4枚からはじめる、いちばんやさしい麻雀")}
+    {shiryo_item("chukyu.webp", "中級", "13枚で、チー・ポンを覚えよう")}
+    {shiryo_item("", "上級", "役と、かんたんな点数を覚えよう")}
+    {shiryo_item("yomikata.webp", "麻雀牌の読み方表", "捨てるときに、名前を言ってみよう（A4横）")}
+  </div>"""
+
+SUBSCRIBE_HOWTO = f"""<div class="howto">
+    <b>登録のしかた</b>
+    <ol>
+      <li>下の欄にメールアドレスを入れて、オレンジのボタン（Subscribe）を押す</li>
+      <li>英語の画面がいくつか出ます。いちばん下の灰色の文字（Skip for now／Maybe later）を押して進めてください</li>
+      <li>「Please confirm your subscription」という英語のメールが届きます。オレンジのボタン（Confirm subscription）を押すと、登録が終わります</li>
+    </ol>
+    <p>うまくいかないときは、公式LINEかメールでお知らせください。</p>
+  </div>
+  <div class="substack-embed"><iframe src="{SUBSTACK}/embed" title="メールアドレスの登録" width="480" height="320" frameborder="0" scrolling="no"></iframe></div>"""
 
 TAKASHIMAJAN = f"""
 <section class="page-head"><div class="wrap"><span class="en">TAKASHIMA MAHJONG</span><h1>たかしまーじゃん</h1><p><span class="nb">麻雀を知らなくても、</span><span class="nb">牌だけあれば遊べる。</span><span class="nb">滋賀・高島で生まれた、</span><span class="nb">いちばんやさしい麻雀です。</span></p></div></section>
@@ -622,21 +649,15 @@ TAKASHIMAJAN = f"""
 </div>
 
 <div class="block" id="shiryo">
-  <h2>ルールの資料を、無料でお届けします</h2>
-  <p>初級・中級・上級のルールの紙と、麻雀牌の読み方表（A4・印刷用）です。<b>自由にコピーしてお使いください。</b></p>
-  <p>下の欄にメールアドレスを入れると、資料のダウンロード先がメールで届きます。</p>
-  <div class="note-box">あわせて、こーせんのメールマガジン（地域活動や、たかしまーじゃんのお知らせ）に登録されます。いつでも、メールの下のリンクから解除できます。</div>
-  <div class="howto">
-    <b>登録のしかた</b>
-    <ol>
-      <li>下の欄にメールアドレスを入れて、オレンジのボタン（Subscribe）を押す</li>
-      <li>英語の画面がいくつか出ます。いちばん下の灰色の文字（Skip for now／Maybe later）を押して進めてください</li>
-      <li>「Please confirm your subscription」という英語のメールが届きます。オレンジのボタン（Confirm subscription）を押してください</li>
-      <li>次に届くメールに、資料のダウンロード先があります</li>
-    </ol>
-    <p>うまくいかないときは、公式LINEかメールでお知らせください。資料をお送りします。</p>
-  </div>
-  <div class="substack-embed"><iframe src="{SUBSTACK}/embed" title="メールアドレスの登録" width="480" height="320" frameborder="0" scrolling="no"></iframe></div>
+  <h2>ルールの資料（無料）</h2>
+  <p>初級・中級のルールの紙と、麻雀牌の読み方表（A4・印刷用）です。<b>登録なしでダウンロードできます。自由にコピーしてお使いください。</b></p>
+  {SHIRYO_GRID}
+</div>
+
+<div class="block" id="oshirase">
+  <h2>新しい版・講習会のお知らせ</h2>
+  <p>ルールを直したときや、講習会の日にちが決まったときは、メール（Substack）でお知らせします。こーせんのメールマガジン（地域活動の話）も一緒に届きます。いつでも、メールの下のリンクから解除できます。</p>
+  {SUBSCRIBE_HOWTO}
 </div>
 
 <div class="block">
@@ -653,24 +674,11 @@ TAKASHIMAJAN = f"""
 </div></div>
 """
 
-def shiryo_item(img, name, text):
-    if img:
-        pic = f'<a class="gal-img" href="{{root}}images/takashimajan/{img}" target="_blank" rel="noopener"><img src="{{root}}images/takashimajan/{img}" alt="{name}" loading="lazy"></a>'
-        dl = f'<a class="btn-sub" href="{{root}}images/takashimajan/{img}" download>ダウンロード</a>'
-    else:
-        pic, dl = '<div class="gal-img"></div>', '<span class="note-box">準備中</span>'
-    return f'<div class="gal">{pic}<div class="card-body"><h3>{name}</h3><p>{text}</p>{dl}</div></div>'
-
 TAKASHIMAJAN_SHIRYO = f"""
 <section class="page-head"><div class="wrap"><span class="en">RULES</span><h1>たかしまーじゃん ルール資料</h1><p>ご登録ありがとうございます。A4で印刷して、自由にコピーしてお使いください。</p></div></section>
 <div class="page-body"><div class="wrap">
 <div class="block">
-  <div class="gal-grid">
-    {shiryo_item("shokyu.webp", "初級", "4枚からはじめる、いちばんやさしい麻雀")}
-    {shiryo_item("chukyu.webp", "中級", "13枚で、チー・ポンを覚えよう")}
-    {shiryo_item("", "上級", "役と、かんたんな点数を覚えよう")}
-    {shiryo_item("yomikata.webp", "麻雀牌の読み方表", "捨てるときに、名前を言ってみよう（A4横）")}
-  </div>
+  {SHIRYO_GRID}
   <p class="note-box">遊び方の説明は、<a href="{{root}}takashimajan/">たかしまーじゃんのページ</a>にあります。分からないことは、公式LINEかメールでお気軽にどうぞ。</p>
 </div>
 </div></div>
@@ -681,16 +689,6 @@ TAKASHIMAJAN_SHIRYO = f"""
 FORMSPREE = "https://formspree.io/f/mrbybkoe"   # 今のHPのお問い合わせフォームと同じ受け口（届くのは同じメール）
 BANSO_ZIP = "banso-0.9.zip"                      # 版を上げたら、functions/haifu/banso/dl.js の FILE も直す
 
-SUBSCRIBE_HOWTO = f"""<div class="howto">
-    <b>登録のしかた</b>
-    <ol>
-      <li>下の欄にメールアドレスを入れて、オレンジのボタン（Subscribe）を押す</li>
-      <li>英語の画面がいくつか出ます。いちばん下の灰色の文字（Skip for now／Maybe later）を押して進めてください</li>
-      <li>「Please confirm your subscription」という英語のメールが届きます。オレンジのボタン（Confirm subscription）を押すと、登録が終わります</li>
-    </ol>
-  </div>
-  <div class="substack-embed"><iframe src="{SUBSTACK}/embed" title="メールアドレスの登録" width="480" height="320" frameborder="0" scrolling="no"></iframe></div>"""
-
 HAIFU = f"""
 <section class="page-head"><div class="wrap"><span class="en">FREE DOWNLOADS</span><h1>配布物</h1><p><span class="nb">無料で使える、</span><span class="nb">資料と道具です。</span></p></div></section>
 <div class="page-body"><div class="wrap">
@@ -698,7 +696,7 @@ HAIFU = f"""
 <div class="block">
   <div class="works-list">
     <a class="work" href="{{root}}haifu/banso/"><span class="cat">AIの手引き</span><span class="date">試作版・2026年10月</span><h3>伴走｜チラシができるまで</h3><p>AIにチラシを頼む前に、「完成形のイメージ」を一緒に作る手引き。Claude Code と ChatGPT で使えます。</p><span class="go">くわしく見る →</span></a>
-    <a class="work" href="{{root}}takashimajan/"><span class="cat">遊びのルール</span><span class="date">2026年10月</span><h3>たかしまーじゃん ルール資料</h3><p>牌だけあれば遊べる、いちばんやさしい麻雀。ルールの紙と、麻雀牌の読み方表（A4・印刷用）。メールアドレスの登録で届きます。</p><span class="go">くわしく見る →</span></a>
+    <a class="work" href="{{root}}takashimajan/"><span class="cat">遊びのルール</span><span class="date">2026年10月</span><h3>たかしまーじゃん ルール資料</h3><p>牌だけあれば遊べる、いちばんやさしい麻雀。ルールの紙と、麻雀牌の読み方表（A4・印刷用）。登録なしでダウンロードできます。</p><span class="go">くわしく見る →</span></a>
   </div>
 </div>
 
@@ -818,7 +816,7 @@ page("results/", "results/", "実績｜遊べるお寺プロジェクト ご依�
 page("about/", "about/", "自己紹介｜遊べるお寺プロジェクト ご依頼・ご相談", "こーせん（久我光聖）。住職・社会福祉士・保育士。滋賀県高島市。", ABOUT)
 page("tsukuru/", "tsukuru/", "公式LINE・ホームページ制作｜遊べるお寺プロジェクト ご依頼・ご相談", "高島のお店・教室・小さな事業者のための、公式LINEとホームページづくり。会って、その場で作ります。", TSUKURU)
 page("contact/", "contact/", "お問い合わせ｜遊べるお寺プロジェクト ご依頼・ご相談", "公式LINEかお問い合わせフォームから。", CONTACT)
-page("takashimajan/", "takashimajan/", "たかしまーじゃん｜遊べるお寺プロジェクト", "麻雀を知らなくても、牌だけあれば遊べる。滋賀・高島で生まれた、いちばんやさしい麻雀「たかしまーじゃん」。ルールの資料を無料でお届けします。", TAKASHIMAJAN)
+page("takashimajan/", "takashimajan/", "たかしまーじゃん｜遊べるお寺プロジェクト", "麻雀を知らなくても、牌だけあれば遊べる。滋賀・高島で生まれた、いちばんやさしい麻雀「たかしまーじゃん」。ルールの資料を、登録なしで無料ダウンロードできます。", TAKASHIMAJAN)
 page(SHIRYO, SHIRYO, "たかしまーじゃん ルール資料｜遊べるお寺プロジェクト", "たかしまーじゃんのルール資料（初級・中級・上級・麻雀牌の読み方表）。", TAKASHIMAJAN_SHIRYO, noindex=True)
 page("haifu/", "haifu/", "配布物｜遊べるお寺プロジェクト", "無料で使える資料と道具。AIでチラシを作る手引き「伴走」、いちばんやさしい麻雀「たかしまーじゃん」のルール資料。", HAIFU)
 page("haifu/banso/", "haifu/banso/", "伴走｜チラシができるまで（試作版・無料）｜遊べるお寺プロジェクト", "AIにチラシを頼む前に、「完成形のイメージ」を一緒に作る手引き。Claude Code と ChatGPT で使えます。試作版を無料で配っています。", BANSO)
