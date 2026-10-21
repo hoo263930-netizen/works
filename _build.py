@@ -480,7 +480,7 @@ HAIFU = f"""
 
 <div class="block">
   <div class="works-list">
-    <a class="work" href="{{root}}haifu/banso/"><span class="cat">AIの手引き</span><span class="date">試作版・2026年10月</span><h3>伴走｜チラシができるまで</h3><p>AIにチラシを頼む前に、「完成形のイメージ」を一緒に作る手引き。Claude Code と ChatGPT で使えます。</p><span class="go">くわしく見る →</span></a>
+    <a class="work" href="{{root}}haifu/banso/"><span class="cat">AIの相棒</span><span class="date">試作版・2026年10月</span><h3>伴走｜イベントができて、続いていくまで</h3><p>地域の会・教室・イベントを開く人のための、AIの手引き。始める・チラシ・記録・相談の4つの場面で付き合います。Claude Code と ChatGPT で使えます。</p><span class="go">くわしく見る →</span></a>
     <a class="work" href="{HP}/takashimahjong/" target="_blank" rel="noopener"><span class="cat">遊びのルール</span><span class="date">2026年10月</span><h3>たかしまーじゃん ルール資料</h3><p>牌だけあれば遊べる、いちばんやさしい麻雀。初級・中級・上級のルールの紙と、麻雀牌の読み方表（A4・印刷用）。登録なしでダウンロードできます。</p><span class="go">くわしく見る（遊べるお寺プロジェクトのHP）→</span></a>
   </div>
 </div>
@@ -495,34 +495,37 @@ HAIFU = f"""
 """
 
 BANSO = f"""
-<section class="page-head"><div class="wrap"><span class="en">FREE TRIAL</span><h1>伴走｜チラシができるまで</h1><p><span class="nb">AIにチラシを頼む前に、</span><span class="nb">「完成形のイメージ」を</span><span class="nb">一緒に作る手引きです。</span><span class="nb">試作版を、無料で配っています。</span></p></div></section>
+<section class="page-head"><div class="wrap"><span class="en">FREE TRIAL</span><h1>伴走</h1><p><span class="nb">イベント・教室・地域の会を開く人のための、</span><span class="nb">AIの相棒です。</span><span class="nb">始めるところから、チラシ、記録、</span><span class="nb">次の回まで付き合います。</span><span class="nb">試作版を、無料で配っています。</span></p></div></section>
 <div class="page-body"><div class="wrap">
 
 <div class="block">
   <h2>こんなときに</h2>
   <ul class="worries">
+    <li>新しく会を始めたいけれど、何から手をつければいいか分からない</li>
+    <li>場所が見つからない。誰と一緒にやればいいか分からない</li>
     <li>AIにチラシを頼んだら、ごちゃごちゃしたものが返ってきた</li>
-    <li>イメージと違うけれど、どう直せばいいか分からない</li>
-    <li>毎回、何をどう頼めばいいか迷う</li>
+    <li>会が終わったあと、何を残して、次にどう生かせばいいか分からない</li>
   </ul>
-  <p>原因はAIの性能ではなく、頼む側に「完成形のイメージ」がないまま頼んでいることにあります。伴走は、そのイメージを作るところを一緒にやります。</p>
+  <p>活動は、場所（箱）・関わる人（ひと）・道具や連絡手段（もの）の3つがそろったとき、はじめて回り出します。伴走は、その土台の点検から、チラシ、記録、次の回の見直しまでを、AIと一緒にやるための手引きです。</p>
 </div>
 
 <div class="block">
-  <h2>進み方</h2>
-  <ol class="flow">
-    <li><h3>質問に答える</h3><p>19の質問が一覧で出ます。音声入力で一気に答えてかまいません。分からない欄は空欄のまま進めます。</p></li>
-    <li><h3>構成案を選ぶ</h3><p>タイトル・キャッチ・一番大きく見せるもの・色などを、3案とおすすめ1つ、その理由つきで出します。</p></li>
-    <li><h3>指示文で画像へ</h3><p>画像を作るAIに渡す指示文ができます。日時や金額は描き込ませず、あとから Canva などで入れます。</p></li>
-  </ol>
+  <h2>伴走でできること</h2>
+  <p>話しかける言葉によって、4つの場面で付き合います。質問はいつも一覧でまとめて出るので、音声入力で一気に答えられます。</p>
+  <div class="works-list">
+    <div class="work"><span class="cat">始める</span><h3>「新しい回を始めたい」</h3><p>箱・ひと・ものを並べて、足りないところを見える化します。場所の候補をためておく台帳や、場所を借りるときの打診の叩き台も作ります。</p></div>
+    <div class="work"><span class="cat">チラシ</span><h3>「チラシを作りたい」</h3><p>19の質問に答えると、構成案（3案＋おすすめ）と、画像を作るAIに渡す指示文ができます。日時や金額は画像に描き込ませず、あとから入れる作りです。</p></div>
+    <div class="work"><span class="cat">記録</span><h3>「回が終わったから記録したい」</h3><p>誰が来たか、想定と違ったことを1枚に残します。箱・ひと・もの・マーケの4つで見て、次の一手を3案で出します。</p></div>
+    <div class="work"><span class="cat">相談</span><h3>「相談したい」</h3><p>人が集まらない、なんだかうまくいかない。過去の記録を読んでから、一緒に考えます。</p></div>
+  </div>
   <p>デザインの画像そのものは作りません。画像は、ChatGPT・Canva など、お使いのもので作ります。</p>
 </div>
 
 <div class="block" id="dl">
   <h2>ダウンロード（無料）</h2>
-  <p>zipファイル（14KB）です。中に、使い方の説明（README）が入っています。</p>
+  <p>zipファイル（26KB）です。中に、使い方の説明（README）が入っています。</p>
   <div class="btns"><a class="btn primary" href="{{root}}haifu/banso/dl" download="{BANSO_ZIP}">無料でダウンロード（試作版 0.9）</a></div>
-  <div class="note-box"><b>試作版です。</b>使ってみた感想を、下のフォームから聞かせてください。次の版づくりに使います。<br />作ったチラシは、お仕事を含めて自由に使えます。ほかの方に紹介するときは、ファイルではなく、このページのリンクを伝えてください（新しい版が届くように）。</div>
+  <div class="note-box"><b>試作版です。</b>使ってみた感想を、下のフォームから聞かせてください。次の版づくりに使います。<br />作ったチラシや記録は、お仕事を含めて自由に使えます。ほかの方に紹介するときは、ファイルではなく、このページのリンクを伝えてください（新しい版が届くように）。</div>
 </div>
 
 <div class="block">
@@ -530,18 +533,18 @@ BANSO = f"""
   <p>くわしくは、zipの中の README にあります。</p>
   <h3>Claude Code で使う</h3>
   <ol>
-    <li>zipを開いて、<code>design-brief</code> フォルダを <code>.claude/skills</code> の中へ、フォルダごと入れる</li>
+    <li>zipを開いて、<code>banso</code> フォルダを <code>.claude/skills</code> の中へ、フォルダごと入れる</li>
     <li>新しいチャットを開く</li>
-    <li>「チラシを作りたい」と話しかける</li>
+    <li>「新しい回を始めたい」「チラシを作りたい」などと話しかける</li>
   </ol>
   <h3>ChatGPT で使う</h3>
   <ol>
     <li>「プロジェクト」を新しく作る</li>
     <li>プロジェクトの「ファイル」に <code>chatgpt/伴走.md</code> を入れる</li>
     <li>「指示」の欄に、READMEにある1行を貼る</li>
-    <li>そのプロジェクトの中で「チラシを作りたい」と話しかける</li>
+    <li>そのプロジェクトの中で、同じように話しかける</li>
   </ol>
-  <p class="note-box">使うには、Claude Code（Anthropic の有料プラン）か、ChatGPT の「プロジェクト」の機能が要ります。</p>
+  <p class="note-box">使うには、Claude Code（Anthropic の有料プラン）か、ChatGPT の「プロジェクト」の機能が要ります。ChatGPTでは、記録や場所の台帳は会話の中に表で出てきます。手元のメモなどに保存しておき、次に相談するときに貼ってください。</p>
 </div>
 
 <div class="block" id="kansou">
@@ -556,7 +559,7 @@ BANSO = f"""
         <label><input type="radio" name="使ったもの" value="そのほか" /> そのほか</label>
       </div>
     </fieldset>
-    <div><label for="fb-made">何を作りましたか</label><input type="text" id="fb-made" name="作ったもの" placeholder="例：教室のチラシ、イベントのバナー" /></div>
+    <div><label for="fb-made">何に使いましたか</label><input type="text" id="fb-made" name="何に使ったか" placeholder="例：教室のチラシ、新しい会の準備、回の記録" /></div>
     <div><label for="fb-good">よかったところ</label><textarea id="fb-good" name="よかったところ"></textarea></div>
     <div><label for="fb-bad">困ったところ・分かりにくかったところ</label><textarea id="fb-bad" name="困ったところ"></textarea></div>
     <div><label for="fb-mail">メールアドレス<span class="opt">返事がほしい方だけ</span></label><input type="email" id="fb-mail" name="email" /></div>
@@ -578,7 +581,7 @@ BANSO = f"""
   <p>使い方の質問や、チラシづくりの相談を受ける窓口（公式LINE）を準備しています。それまでは、上のフォームか、メール（<a href="mailto:{MAIL}">{MAIL}</a>）でどうぞ。</p>
 </div>
 
-<p class="note-box">作った人：遊べるお寺プロジェクト　こーせん（久我光聖）。滋賀県高島市で、健康麻雀・写経会・チラシ作り講座などをやっているお坊さんです。自分のチラシを作る中で、この手引きができました。→ <a href="{{root}}about/">自己紹介</a></p>
+<p class="note-box">作った人：遊べるお寺プロジェクト　こーせん（久我光聖）。滋賀県高島市で、健康麻雀・写経会・チラシ作り講座などをやっているお坊さんです。自分の会を開いて、チラシを作り、記録をつけて、次の回を直す中で、この手引きができました。→ <a href="{{root}}about/">自己紹介</a></p>
 
 </div></div>
 <script>
@@ -601,5 +604,5 @@ page("results/", "results/", "実績｜遊べるお寺プロジェクト ご依�
 page("about/", "about/", "自己紹介｜遊べるお寺プロジェクト ご依頼・ご相談", "こーせん（久我光聖）。住職・社会福祉士・保育士。滋賀県高島市。", ABOUT)
 page("tsukuru/", "tsukuru/", "公式LINE・ホームページ制作｜遊べるお寺プロジェクト ご依頼・ご相談", "高島のお店・教室・小さな事業者のための、公式LINEとホームページづくり。会って、その場で作ります。", TSUKURU)
 page("contact/", "contact/", "お問い合わせ｜遊べるお寺プロジェクト ご依頼・ご相談", "公式LINEかお問い合わせフォームから。", CONTACT)
-page("haifu/", "haifu/", "配布物｜遊べるお寺プロジェクト", "無料で使える資料と道具。AIでチラシを作る手引き「伴走」、いちばんやさしい麻雀「たかしまーじゃん」のルール資料。", HAIFU)
-page("haifu/banso/", "haifu/banso/", "伴走｜チラシができるまで（試作版・無料）｜遊べるお寺プロジェクト", "AIにチラシを頼む前に、「完成形のイメージ」を一緒に作る手引き。Claude Code と ChatGPT で使えます。試作版を無料で配っています。", BANSO)
+page("haifu/", "haifu/", "配布物｜遊べるお寺プロジェクト", "無料で使える資料と道具。イベントの始め方からチラシ・記録まで付き合うAIの手引き「伴走」、いちばんやさしい麻雀「たかしまーじゃん」のルール資料。", HAIFU)
+page("haifu/banso/", "haifu/banso/", "伴走｜イベントができて、続いていくまで（試作版・無料）｜遊べるお寺プロジェクト", "イベント・教室・地域の会を開く人のための、AIの相棒。始める・チラシ・記録・相談の4つの場面で付き合います。Claude Code と ChatGPT で使えます。試作版を無料で配っています。", BANSO)
