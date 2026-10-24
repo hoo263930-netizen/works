@@ -3,7 +3,7 @@
 import io, os
 
 HP = "https://hoo263930-netizen.github.io"
-LINE_SOUDAN = "https://lin.ee/ZITRIHg"      # 公式LINEで相談する（今のHPのご依頼ページと同じ）
+LINE_SOUDAN = "https://lin.ee/ZITRIHg"      # 公式LINEで問い合わせる（今のHPのご依頼ページと同じ）
 FORM = HP + "/contact/"                      # お問い合わせフォーム（今のHP）
 NOTE = "https://note.com/loyal_dill1011"
 INSTA = "https://www.instagram.com/asoberu_otera/"
@@ -41,7 +41,7 @@ def header(root, current):
     links.append(f'<a class="nav-cta" href="{root}contact/"{cur}>お問い合わせ</a>')
     return f"""<header class="site-header">
   <div class="wrap">
-    <a class="logo" href="{root}"><b>遊べるお寺プロジェクト</b><small>ご依頼・ご相談</small></a>
+    <a class="logo" href="{root}"><b>遊べるお寺プロジェクト</b><small>ご依頼・お問い合わせ</small></a>
     <nav class="nav" aria-label="メニュー">{''.join(links)}</nav>
   </div>
 </header>
@@ -50,10 +50,10 @@ def header(root, current):
 def cta_band(root):
     return f"""<section class="cta-band">
   <div class="wrap">
-    <h2>ご相談はこちらから</h2>
+    <h2>お問い合わせはこちらから</h2>
     <p>日にちが決まっていなくても大丈夫です。候補の日、場所、人数、ご予算（決まっていれば）を教えていただけると、話が早く進みます。</p>
     <div class="btns">
-      <a class="btn primary" href="{LINE_SOUDAN}" target="_blank" rel="noopener">公式LINEで相談する</a>
+      <a class="btn primary" href="{LINE_SOUDAN}" target="_blank" rel="noopener">公式LINEで問い合わせる</a>
       <a class="btn ghost" href="{FORM}" target="_blank" rel="noopener">お問い合わせフォーム</a>
     </div>
     <p class="band-sub">Instagramの<a href="{INSTA}" target="_blank" rel="noopener">DM</a>、メール（<a href="mailto:{MAIL}">{MAIL}</a>）でも受け付けています。</p>
@@ -128,12 +128,12 @@ def work_card(cat, date, title, text, url):
 TOP = f"""
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow">遊べるお寺プロジェクト｜ご依頼・ご相談</p>
+    <p class="eyebrow"><span class="nb">遊べるお寺プロジェクト｜</span><span class="nb">ご依頼・お問い合わせ</span></p>
     <h1><span class="nb">地域の「人が集まる場」を、</span><span class="nb">ひらいて、</span><span class="nb">続く形にします</span></h1>
     <p class="lead">健康麻雀・座禅・ボードゲームで場をひらく、滋賀・高島のお坊さん</p>
     <p class="body">公民館、サロン、学童、施設へ出張します。一回の催しで終わらせず、担い手の方が一人でも回せる形まで、一緒に考えます。</p>
     <div class="btns">
-      <a class="btn primary" href="{{root}}contact/">相談する</a>
+      <a class="btn primary" href="{{root}}contact/">問い合わせる</a>
       <a class="btn ghost" href="{{root}}service/">サービスを見る</a>
     </div>
   </div>
@@ -239,6 +239,14 @@ TSUKURU_PRICE = """<table class="price">
   <li>ホームページはCanvaで作ります。あとからご自身で直せます。公開は無料のアドレス（〇〇.my.canva.site）です。お店独自のアドレスにする場合は、Canvaの有料プランとドメイン代（年1,000〜3,000円ほど）が、お店側でかかります。</li>
   <li>ホームページの直しは1回まで。文章と写真は、お店側でご用意ください。</li>
 </ul>"""
+# 03 相談にのる（団体）の料金。今のHPの個別相談と同じ（2026年10月20日に決定・10月24日に団体もそろえた）
+SOUDAN_PRICE = """<table class="price">
+  <tr><th>オンライン</th><td><b>1時間 3,000円</b></td></tr>
+  <tr><th>こちらから伺う場合</th><td><b>1時間 5,000円</b><span class="p-sub">高島市内</span></td></tr>
+</table>
+<ul class="price-notes">
+  <li>1時間をこえる場合は、1時間ごとに同じ料金です。</li>
+</ul>"""
 SERVICE = f"""
 <section class="page-head"><div class="wrap"><span class="en">SERVICE</span><h1>サービス</h1><p>中心は「場をひらく」と「続く形にする」の2つです。公式LINE・ホームページの制作もお受けしています。</p></div></section>
 <div class="page-body"><div class="wrap">
@@ -285,8 +293,9 @@ SERVICE = f"""
   <p>これから始めたい。人が集まらない。続けるのがしんどい。そうした段階のご相談をお受けします。場所（箱）・関わる人（ひと）・道具や連絡手段（もの）の順に、何が足りていて、何が止まっているかを一緒に整理します。</p>
   <h3>向いている依頼の例</h3>
   <ul class="tag-list"><li>新しい集まりを始めたい団体・自治会</li><li>行事を少ない人数で回せる形にしたい</li><li>チラシ・公式LINE・ホームページの使い方が分からない</li></ul>
-  <p>団体の方は、お会いして、またはオンラインで。個人の方は、<a href="{HP}/consult/" target="_blank" rel="noopener">オンラインの個別相談（1時間3,000円）</a>もあります。</p>
-  {PRICE_NOTE}
+  <p>団体の方は、お会いして、またはオンラインで。個人の方は、<a href="{HP}/consult/#online" target="_blank" rel="noopener">相談のページの個別相談（オンライン1時間3,000円）</a>からお申し込みください。</p>
+  <h3>料金</h3>
+  {SOUDAN_PRICE}
 </div>
 
 <div class="block" id="tsukuru">
@@ -443,7 +452,7 @@ CONTACT = f"""
 <div class="block">
   <h2>窓口</h2>
   <div class="btns">
-    <a class="btn primary" href="{LINE_SOUDAN}" target="_blank" rel="noopener">公式LINEで相談する</a>
+    <a class="btn primary" href="{LINE_SOUDAN}" target="_blank" rel="noopener">公式LINEで問い合わせる</a>
     <a class="btn ghost" href="{FORM}" target="_blank" rel="noopener">お問い合わせフォーム</a>
   </div>
   <ul>
@@ -598,11 +607,11 @@ document.querySelectorAll(".fb-form").forEach(function(f){{
 </script>
 """
 
-page("", "", "遊べるお寺プロジェクト｜ご依頼・ご相談", "地域の「人が集まる場」を、ひらいて、続く形にします。健康麻雀・座禅・ボードゲームで場をひらく、滋賀・高島のお坊さん。", TOP)
-page("service/", "service/", "サービス｜遊べるお寺プロジェクト ご依頼・ご相談", "出張して場をひらく／続く形にする（研修・講座・講演）／相談にのる／つくる（公式LINE・ホームページ）", SERVICE)
-page("results/", "results/", "実績｜遊べるお寺プロジェクト ご依頼・ご相談", "健康麻雀・座禅・謎解き・講座など、これまでに開いた場とお受けした依頼。", RESULTS)
-page("about/", "about/", "自己紹介｜遊べるお寺プロジェクト ご依頼・ご相談", "こーせん（久我光聖）。住職・社会福祉士・保育士。滋賀県高島市。", ABOUT)
-page("tsukuru/", "tsukuru/", "公式LINE・ホームページ制作｜遊べるお寺プロジェクト ご依頼・ご相談", "高島のお店・教室・小さな事業者のための、公式LINEとホームページづくり。会って、その場で作ります。", TSUKURU)
-page("contact/", "contact/", "お問い合わせ｜遊べるお寺プロジェクト ご依頼・ご相談", "公式LINEかお問い合わせフォームから。", CONTACT)
+page("", "", "遊べるお寺プロジェクト｜ご依頼・お問い合わせ", "地域の「人が集まる場」を、ひらいて、続く形にします。健康麻雀・座禅・ボードゲームで場をひらく、滋賀・高島のお坊さん。", TOP)
+page("service/", "service/", "サービス｜遊べるお寺プロジェクト ご依頼・お問い合わせ", "出張して場をひらく／続く形にする（研修・講座・講演）／相談にのる／つくる（公式LINE・ホームページ）", SERVICE)
+page("results/", "results/", "実績｜遊べるお寺プロジェクト ご依頼・お問い合わせ", "健康麻雀・座禅・謎解き・講座など、これまでに開いた場とお受けした依頼。", RESULTS)
+page("about/", "about/", "自己紹介｜遊べるお寺プロジェクト ご依頼・お問い合わせ", "こーせん（久我光聖）。住職・社会福祉士・保育士。滋賀県高島市。", ABOUT)
+page("tsukuru/", "tsukuru/", "公式LINE・ホームページ制作｜遊べるお寺プロジェクト ご依頼・お問い合わせ", "高島のお店・教室・小さな事業者のための、公式LINEとホームページづくり。会って、その場で作ります。", TSUKURU)
+page("contact/", "contact/", "お問い合わせ｜遊べるお寺プロジェクト ご依頼・お問い合わせ", "公式LINEかお問い合わせフォームから。", CONTACT)
 page("haifu/", "haifu/", "配布物｜遊べるお寺プロジェクト", "無料で使える資料と道具。イベントの始め方からチラシ・記録まで付き合うAIの手引き「伴走」、いちばんやさしい麻雀「たかしまーじゃん」のルール資料。", HAIFU)
 page("haifu/banso/", "haifu/banso/", "伴走｜イベントができて、続いていくまで（試作版・無料）｜遊べるお寺プロジェクト", "イベント・教室・地域の会を開く人のための、AIの相棒。始める・チラシ・記録・相談の4つの場面で付き合います。Claude Code と ChatGPT で使えます。試作版を無料で配っています。", BANSO)
