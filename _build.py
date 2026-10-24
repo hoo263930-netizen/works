@@ -1,3 +1,7 @@
+# ⚠️ 2026年10月24日：works の中身は、今のHP（https://asoberu-otera.pages.dev/）へ移した。
+# 各ページは「移りました」のページ（今のHPへ自動で移す）にしたので、この道具は動かさない（動かすと元のページに戻ってしまう）
+raise SystemExit("works の中身は今のHPへ移した（2026年10月24日）。_build.py は使わない")
+
 # works のページを組み立てる（ヘッダー・フッターを全ページで共通にするための、ローカル用の小さな道具）
 # 使い方：python _build.py  → index.html / service/ / results/ / about/ / contact/ を書き出す
 import io, os
