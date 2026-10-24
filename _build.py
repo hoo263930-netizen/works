@@ -141,7 +141,7 @@ TOP = f"""
 
 <section class="section">
   <div class="wrap">
-    <div class="sec-head"><span class="en">CONCERNS</span><h2>こんなとき、ご相談ください</h2></div>
+    <div class="sec-head"><span class="en">CONCERNS</span><h2>こんなとき、お問い合わせください</h2></div>
     <ul class="worries">
       <li>講座や行事を開いても、人が集まらない</li>
       <li>毎年同じ企画で、ネタが尽きてきた</li>
@@ -216,7 +216,7 @@ TOP = f"""
   <div class="wrap">
     <div class="sec-head"><span class="en">FAQ</span><h2>よくある質問</h2></div>
     <div class="faq">
-      <details><summary>まだ内容が決まっていなくても、相談できますか？</summary><p>できます。目的、対象の方、会場、時期をうかがいながら、できる形を一緒に考えます。</p></details>
+      <details><summary>まだ内容が決まっていなくても、問い合わせできますか？</summary><p>できます。目的、対象の方、会場、時期をうかがって、お受けできる形と費用をお伝えします。お問い合わせは無料です。何をどうすればいいかを一緒に考える時間は、<a href="{{root}}service/#soudan">「相談にのる」</a>（オンライン1時間3,000円）としてお受けしています。</p></details>
       <details><summary>予算が限られています。</summary><p>時間を短くする、今ある内容を使う、準備物をそちらでご用意いただくなど、条件に合わせて組み直します。</p></details>
       <details><summary>会場で用意するものはありますか？</summary><p>机・椅子・電源・駐車場は、主催者側でご用意いただく形が基本です。麻雀卓など、運べるものはこちらで持って行きます。必要なものは事前にお伝えします。</p></details>
     </div>
@@ -267,7 +267,7 @@ SERVICE = f"""
   <h3>向いている依頼の例</h3>
   <ul class="tag-list"><li>公民館の講座</li><li>高齢者サロン・地域の集まり</li><li>学童・子ども会・子ども食堂の行事</li><li>お祭り・フェスタのブース</li><li>市や団体の交流イベント</li></ul>
   <h3>料金</h3>
-  <p>内容・準備の量・人数・移動の距離で変わります。交通費・印刷物・材料費が要るときは、事前にお伝えします。謎解きを新しく作る場合は、別にご相談します。</p>
+  <p>内容・準備の量・人数・移動の距離で変わります。交通費・印刷物・材料費が要るときは、事前にお伝えします。謎解きを新しく作る場合は、別にお見積もりをお出しします。</p>
   {PRICE_NOTE}
 </div>
 
@@ -339,7 +339,7 @@ TSUKURU = f"""
   <div class="cards">
     <div class="card"><span class="num">01</span><h3>その日に、できあがる</h3><p>お店に伺い、お話を聞きながら、その場で作ってお渡しします（公式LINEは目安2時間。ホームページは1〜2回伺います）。</p></div>
     <div class="card"><span class="num">02</span><h3>自分で直せる形で渡す</h3><p>データごとお渡しし、直し方も一度いっしょにやります。あとから誰かに頼まなくてすみます。</p></div>
-    <div class="card"><span class="num">03</span><h3>「まだ決めていない」から相談できる</h3><p>作るかどうか迷っている段階でも大丈夫です。</p></div>
+    <div class="card"><span class="num">03</span><h3><span class="nb">「まだ決めていない」でも</span><span class="nb">問い合わせできる</span></h3><p>作るかどうか迷っている段階でも大丈夫です。お問い合わせは無料です。</p></div>
   </div>
 </div>
 
@@ -459,7 +459,7 @@ CONTACT = f"""
     <li>Instagramの<a href="{INSTA}" target="_blank" rel="noopener">DM</a>でも受け付けています</li>
     <li>メール：<a href="mailto:{MAIL}">{MAIL}</a></li>
   </ul>
-  <p class="note-box">個人の方の個別相談は、<a href="{HP}/consult/" target="_blank" rel="noopener">相談のページ</a>からお申し込みください。</p>
+  <p class="note-box">個人の方の個別相談は、<a href="{HP}/consult/#online" target="_blank" rel="noopener">相談のページ</a>からお申し込みください。</p>
 </div>
 </div></div>
 """
@@ -586,8 +586,9 @@ BANSO = f"""
 </div>
 
 <div class="block">
-  <h2>質問・相談</h2>
-  <p>使い方の質問や、チラシづくりの相談を受ける窓口（公式LINE）を準備しています。それまでは、上のフォームか、メール（<a href="mailto:{MAIL}">{MAIL}</a>）でどうぞ。</p>
+  <h2>質問・お問い合わせ</h2>
+  <p>使い方の質問を受ける窓口（公式LINE）を準備しています。それまでは、上のフォームか、メール（<a href="mailto:{MAIL}">{MAIL}</a>）でどうぞ。</p>
+  <p>チラシづくりのやり方のご相談は、<a href="{HP}/consult/#online" target="_blank" rel="noopener">個別相談（オンライン1時間3,000円）</a>でお受けしています。</p>
 </div>
 
 <p class="note-box">作った人：遊べるお寺プロジェクト　こーせん（久我光聖）。滋賀県高島市で、健康麻雀・写経会・チラシ作り講座などをやっているお坊さんです。自分の会を開いて、チラシを作り、記録をつけて、次の回を直す中で、この手引きができました。→ <a href="{{root}}about/">自己紹介</a></p>
